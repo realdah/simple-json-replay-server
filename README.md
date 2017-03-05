@@ -1,4 +1,4 @@
-# Simple JSON Replay Server
+# Simple JSON Replay Server  (Not yet published to npm, still working on it)
 Pefect companion with angular 1/2 development, and unit mock testing.
 
 ### It is not a Restful Json Server
