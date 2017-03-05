@@ -10,10 +10,10 @@ Isn't it overkill? if we just need a mock server to help us during development l
 
 ### Basic useful feature list:
 
- * **Simple command** to launch it in any avaialbe port with zero configuration
- * **Easy to maintain data** Put a url and a response json in your replay data folder and you should get it right away
+ * **Simple command** to launch it in any avaialbe port with zero configuration.
+ * **Easy to maintain data** Put a url and a response json in your replay data folder and you should get it right away.
  * **Advanced features** to allow you set more matching rules including request parameter, method, header, cookie. 
- * **Straight-foward rules** to return best match results
- * **Fast & Predictable**, Once configured, it will response immediately and consitently
- * **Flexible & Powerful**, You can configure different parameters to simulating different scenarios for same service call
+ * **Straight-foward rules** to return best match results.
+ * **Fast & Predictable**, Once configured, it will response immediately and consitently.
+ * **Flexible & Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call.
   
