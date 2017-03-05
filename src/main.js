@@ -5,6 +5,7 @@ var _ = require('underscore');
 
 var app = express();
 
+//beautify the JSON output from mock server, this will give a lot of convenient during development. (it is not a production environment, performance is lower priority)
 app.set('json spaces', 4);
 
 var options = parseArguments();
