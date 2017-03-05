@@ -1,0 +1,15 @@
+{
+    "request" : {
+        "url": "test",
+        "method" : "get",
+        "params" : {
+
+        }
+    },
+    "response" : {
+        "status" : 200,
+        "data" : {
+            
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "simple-json-replay-server",
+  "version": "0.0.1",
+  "description": "A simple json replay server which can be used for standalone frontend web application (angular especially) when development.  Simply put the url & parameters and response you would like to put, as long as it matches the url and parameters, it will return the best match json data.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "simple",
+    "json",
+    "replay",
+    "server",
+    "mock",
+    "testing",
+    "development"
+  ],
+  "author": "Jeff Duan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.0",
+    "glob": "^7.1.1",
+    "underscore": "^1.8.3"
+  }
+}
