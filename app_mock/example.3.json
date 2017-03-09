@@ -1,15 +1,15 @@
 {
     "request" : {
         "url": "test",
-        "method" : "get",
+        "method" : "post",
         "params" : {
-            "aa" : "123"
+
         }
     },
     "response" : {
         "status" : 200,
         "data" : {
-            "key" : "example zero"
+            "key" : "this is a post example"
         }
     }
 }

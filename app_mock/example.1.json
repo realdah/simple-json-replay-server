@@ -3,13 +3,13 @@
         "url": "test",
         "method" : "get",
         "params" : {
-            "aa" : "123"
+            "bb" : 123
         }
     },
     "response" : {
         "status" : 200,
         "data" : {
-            "key" : "example zero"
+            "bbb" : "example 1"
         }
     }
 }
