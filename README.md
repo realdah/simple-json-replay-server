@@ -2,7 +2,7 @@
 Pefect companion with angular 1/2 development, and unit mock testing.
 
 ## It is not a Restful Json Server
-Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching url and query parameters and return response you expect?
+Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching url and query parameters and return response which matching you expect?
 
 You probably will be disappointed, because not all but at least majority of them are fancy shinning restful style severs which either return dynamic json in memory or manipulate some text based db files. And obviously, they will all require you to send standard restful style requests and then response with some dynamic results which you might have to think hard to set it up.
 
@@ -12,11 +12,11 @@ Or, if you have legacy backend API design, which are not strictly following rest
 ## Simple Features
 
  * **Simple command** to launch it with optional port and folder configuration.
- * **Easy to maintain data** Put a url and a response json in your replay data folder and you should get it right away.
+ * **Supre Easy to create & maintain data** Create a pure json file in your replay data folder and you should get it right away, no programming is required.
  * **Advanced features** to allow you set more matching rules including request parameter, method, header, cookie etc. 
- * **Straight-foward rules** to return best match results.
+ * **Straight-foward rules** configured in the file, they are almost self explaining.
  * **Fast & Predictable**, Once configured, it will response immediately and consitently.
- * **Flexible & Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call.
+ * **Simple but still Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call, such as paginiation, error, failure etc.
   
 
 ## How to start 
