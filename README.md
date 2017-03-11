@@ -24,7 +24,9 @@ Isn't it overkill? if we just need a mock server to help us during development l
  
 ```
 npm install simple-json-replay-server --save-dev
-```    
+``` 
+
+
 >  **Create app_mock folder under your application root**
  
  go to your application root folder, where it has package.json & your node_modules folder.
@@ -33,13 +35,14 @@ npm install simple-json-replay-server --save-dev
 mkdir app_mock
 ```    
 
+
 > **Create mock data config files**    
 
 Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to hold this file**.
 
 Once start replay server, you can hit <http://localhost:8008/test> to see the result
 
-Example 1: 
+Example: 
 
 
 ```
@@ -57,21 +60,24 @@ Example 1:
 }
 ```  
 
+
 > **Start the replay server**  
  
  ```
 node node_modules/simple-json-replay-server/src/main.js
  ```
 
- ## Integrate with your development work flow
 
- As we all know, nowadays, most of frontend projects have been completely seperated from backend projects. 
- 
- When we develop frontend application, we often tend to mock the data either directly in the code or hard-coded in backend service before implemented, which will requires some code changes during integration phase. And more often it is not easy to setup mock data which can cover many business scenarios.
+## Integrate with your development work flow
 
- With this simple json replay server approach, **your code is always the same code which you will use in production**, and in local development environment, you can route all your backend restful service calls to this replay server and thus you can run and play with your frontend application without **ANY dependency** on your backend server.
+As we all know, nowadays, most of frontend projects have been completely seperated from backend projects. 
+
+When we develop frontend application, we often tend to mock the data either directly in the code or hard-coded in backend service before implemented, which will requires some code changes during integration phase. And more often it is not easy to setup mock data which can cover many business scenarios.
+
+With this simple json replay server approach, **your code is always the same code which you will use in production**, and in local development environment, you can route all your backend restful service calls to this replay server and thus you can run and play with your frontend application without **ANY dependency** on your backend server.
 
 I will take two most popular frontend build tools/solutions for example:
+
 1. **Webpack** (new fashionable toy)
 2. **Grunt**   (old world favorite , **Gulp** as well)
 
