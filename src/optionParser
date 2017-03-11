@@ -1,0 +1,46 @@
+var _ = require('underscore');
+
+var optionsConfig = {
+    "port" : {
+        "default" : 8008,
+        "desc" : "port number used by mock replay server"
+    },
+     "folder" : {
+        "default" : "app_mock",
+        "desc" : "mock data folder, you can give relative or absolute path"
+     }
+};
+
+function parseArguments() {
+    var MOCK_DATA_FOLDER = "app_mock";
+    var args = process.argv.slice(2);
+    
+    if (args.length === 0) {
+        console.log("You can use below options to start the server:  (eg. --port=8990 )");
+        _.each(optionsConfig, function(value, key){
+            console.log("--" + key + "    "  + value.desc);
+        });
+        console.log("Visit https://github.com/realdah/simple-json-replay-server for more information\n\n");
+    }
+
+    //default options
+    var options = {};
+    _.each(optionsConfig, function(value, key){
+        return options[key] = value["default"];
+    });
+
+    _.each(args, function(arg) {
+        _.each(optionsConfig, function(value, key){
+            var option = ('--' + key + '=');
+            if(arg.startsWith(option)) {
+                options[key] = arg.replace(option, "");
+            }
+        });
+    });
+
+    return options;
+}
+
+exports.parseArguments = parseArguments;
+
+
