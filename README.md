@@ -127,10 +127,10 @@ When we develop frontend application, we often tend to mock the data either dire
 With this simple json replay server approach, **your code is always the same code which you will use in production**, and in local development environment, you can route all your backend restful service calls to this replay server and thus you can run and play with your frontend applicati
 With this simple json replay server approach, **your code is always the same code which you will use in production**, and in local development environment, you can route all your backend restful service calls to this replay server and thus you can run and play with your frontend application without **ANY dependency** on your backend server.
 
-I will take two most popular frontend build tools/solutions for example:
+I will take below some of most popular frontend build tools/solutions for example:
 
-1. **Webpack** (new fashionable toy)
-2. **Grunt**   (old world favorite , **Gulp** as well)
+* **Webpack**
+* **Grunt** (**Gulp** as well)
 
 
 ### ✦ Webpack 
