@@ -76,7 +76,7 @@ node node_modules/simple-json-replay-server/src/main.js
 
 > **Config a shortcut in package.json (Nice to have Step)**
 
-Open your package.json of you frontend application
+Open **package.json** of your frontend application
 ```
   "scripts": {
     "mockServer": "node node_modules/simple-json-replay-server/src/main.js"
@@ -102,7 +102,15 @@ Key | Value | Optional | Description
  method | http methods | Yes | default as **get**
  query | a json map with key value pairs | Yes | you can only give keys which you want to match. default as **undefined**
 
+> **Response** 
 
+The Response object can be defined as below properties.
+
+Key | Value | Optional | Description
+---------|----------|----------|---------
+ status | http status | Yes | default as **200**
+ delay | number in milliseconds | Yes | default as **0** which is no delay. you can give **negative value**, which means **timeout**, in this case, will ignore the any other response settings.
+ data | a json object map | Yes | you can define the expected json response.
 
 ## Integrate with your development work flow
 
