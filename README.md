@@ -129,4 +129,40 @@ I will take two most popular frontend build tools/solutions for example:
 ### **Webpack** 
 **Webpack** based solution is gaining more popularity, and both angular 2 official and one of most popular tools - **angular-cli** are all using webpack as their build tool.
 
+
+> **Angular2 with Angular-Cli**
+
+Please find instruction in below
+
+Original source:
+<https://www.npmjs.com/package/angular-cli#proxy-to-backend>
+
+Using the proxying support in webpack's dev server we can highjack certain urls and send them to a backend server. We do this by passing a file to --proxy-config
+
+Say we have a server running on http://localhost:8008/api and we want all calls to http://localhost:4200/api to go to that server.
+
+We create a file next to projects package.json called proxy.conf.json with the content
+
+```
+{
+  "/api": {
+    "target": "http://localhost:8008",
+    "secure": false
+  }
+}
+```
+
+You can read more about what options are available here **webpack-dev-server** proxy settings
+
+and then we edit the package.json file's start script to be
+
+```
+"start": "ng serve --proxy-config proxy.conf.json",
+```
+
+now run it with **npm start**
+
+> **Mannually Using Webpack**
+
+
 ~~To Be Continue~~
