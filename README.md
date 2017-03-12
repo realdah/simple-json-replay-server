@@ -74,11 +74,15 @@ node node_modules/simple-json-replay-server/src/main.js
 
 > **Request** 
 
-Key | Value | Description
----------|----------|---------
- path | part of path or full path | You can give partial of path or full path, for example, the full path is "/api/examples", you can give just "examples" or "example" or "/examples", all of them will match.
- method | http methods | default as **get**
- query | a json map with key value pairs | you can only give the keys which you want to match. 
+The request object can be defined as below propertities.
+You can possibly define as many as mock data configs which match the same path. However, the mock sever will return the best matching mock data based on a ranking algorithm. if more than one mock data get the same matching ranking, we will not guarantee which one will return.
+
+
+Key | Value | Optional | Description
+---------|----------|----------|---------
+ path | part of path or full path | No | You can give part of path or full path, for example, the full path is "/api/examples", you can give just "examples" or "example" or "/examples", all of them will match.
+ method | http methods | Yes | default as **get**
+ query | a json map with key value pairs | Yes | you can only give keys which you want to match. default as **undefined**
 
 
 
@@ -99,4 +103,4 @@ I will take two most popular frontend build tools/solutions for example:
 ### **Webpack** 
 **Webpack** based solution is gaining more popularity, and both angular 2 official and one of most popular tools - **angular-cli** are all using webpack as their build tool.
 
-<To Be Edited>
+~~To Be Continue~~
