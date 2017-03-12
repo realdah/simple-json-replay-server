@@ -21,14 +21,14 @@ Or, if you have legacy backend API design, which are not strictly following rest
 
 ## How to start 
 
-> **Install to your package.json**
+### ✦ **Install to your package.json**
  
 ```
 npm install simple-json-replay-server --save-dev
 ``` 
 
 
->  **Create app_mock folder under your application root**
+### ✦ **Create app_mock folder under your application root**
  
  go to your application root folder, where it has package.json & your node_modules folder.
  
@@ -37,13 +37,13 @@ mkdir app_mock
 ```    
 
 
-> **Create mock data config files**    
+### ✦ **Create mock data config files**    
 
 Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to organize your mock data files**. Our application only look for files ending with ".json" in app_mock folder.
 
 Once start replay server, you can hit <http://localhost:8008/test> to see the result.
 
-Please note: _you are able to config a different port number if it conflicts._
+> Please note: _you are able to config a different port number if it conflicts._
 
 Example: 
 
@@ -68,13 +68,13 @@ Example:
 ```  
 
 
-> **Start the replay server**  
+### ✦ **Start the replay server**  
  
  ```
 node node_modules/simple-json-replay-server/src/main.js
  ```
 
-> **Config a shortcut in package.json (Nice to have Step)**
+### ✦ **Config a shortcut in package.json (Nice to have Step)**
 
 Open **package.json** of your frontend application
 ```
@@ -121,6 +121,7 @@ As we all know, nowadays, most of frontend projects have been completely seperat
 
 When we develop frontend application, we often tend to mock the data either directly in the code or hard-coded in backend service before implemented, which will requires some code changes during integration phase. And more often it is not easy to setup mock data which can cover many business scenarios.
 
+With this simple json replay server approach, **your code is always the same code which you will use in production**, and in local development environment, you can route all your backend restful service calls to this replay server and thus you can run and play with your frontend applicati
 With this simple json replay server approach, **your code is always the same code which you will use in production**, and in local development environment, you can route all your backend restful service calls to this replay server and thus you can run and play with your frontend application without **ANY dependency** on your backend server.
 
 I will take two most popular frontend build tools/solutions for example:
@@ -133,7 +134,7 @@ I will take two most popular frontend build tools/solutions for example:
 **Webpack** based solution is gaining more popularity, and both angular 2 official and one of most popular tools - **angular-cli** are all using webpack as their build tool.
 
 
-#### _Angular2 with Angular-Cli_
+#### ► Angular2 with Angular-Cli
 
 Please find instruction in below
 
@@ -166,7 +167,41 @@ and then we edit the package.json file's start script to be
 
 now run it with **npm start**
 
-#### _Mannually Using Webpack_
+#### ► Directly Use Webpack
+
+Very similiar to angular-cli configuration because it is using the same webpack which then use **webpack-dev-server** internally.
+
+You should add below configuration in your **webpack.config.js** in your project. 
+
+> Please note: this is a javascript file instead of json file.
+
+An example of this javascript based configuration file for webpack:
+<https://webpack.js.org/configuration/>
+
+```
+//shortcut config
+proxy: {
+  "/api": "http://localhost:8008"
+}
+```
+This is almost equivalent to 
+
+```
+proxy: {
+  "/api": {
+    target: "http://localhost:8008",
+    secure: false
+  }
+}
+```
+
+For more advanced proxy configuration, please read offical document: <https://webpack.js.org/configuration/dev-server/#devserver-proxy>
+
+
+### **2. Grunt** 
+
+If your project is still using **grunt** or **gulp**, you can look at this charpter. I will not give example for **gulp**, however, the approach would be very much similiar.
+
 
 
 ~~To Be Continue~~
