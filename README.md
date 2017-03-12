@@ -43,7 +43,7 @@ Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you 
 
 Once start replay server, you can hit <http://localhost:8008/test> to see the result.
 
-> Please note: _you are able to config a different port number if it conflicts._
+> Please note: you are able to config a different port number if it conflicts.
 
 Example: 
 
@@ -74,7 +74,9 @@ Example:
 node node_modules/simple-json-replay-server/src/main.js
  ```
 
-### ✦ **Config a shortcut in package.json (Nice to have Step)**
+### ✦ **Config a shortcut in package.json**
+
+> Nice to have step only, you can create alias in mac/unix or bat file for windows instead.
 
 Open **package.json** of your frontend application
 ```
@@ -88,10 +90,11 @@ Now, you can run below shorter command to start mock server
 npm run mockServer
 ```
 
+> You can then create concurrent tasks in whatever preferrable ways you want
 
 ## Mock Data Specification
 
-> **Request** 
+### ✦ Request
 
 The request object can be defined as below propertities.
 You can possibly define as many as mock data configs which match the same path. However, the mock sever will return the best matching mock data based on a ranking algorithm. if more than one mock data get the same matching ranking, we will not guarantee which one will return.
@@ -103,7 +106,7 @@ Key | Value | Optional | Description
  method | http methods | Yes | default as **get**
  query | a json map with key value pairs | Yes | you can only give keys which you want to match. default as **undefined**
 
-> **Response** 
+### ✦ Response
 
 The Response object can be defined as below properties.
 
