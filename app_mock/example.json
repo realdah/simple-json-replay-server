@@ -1,6 +1,6 @@
 {
     "request" : {
-        "url": "test",
+        "path": "test",
         "method" : "get",
         "params" : {
             "aa" : "123"

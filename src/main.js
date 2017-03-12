@@ -1,4 +1,5 @@
 var express = require('express');
+var _ = require('underscore');
 
 var util = require("./util");
 var optionParser = require("./optionParser");

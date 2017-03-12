@@ -4,7 +4,7 @@ var _ = require('underscore');
 
 var util = require("./util");
 
-//requestMappings should be a map with url as a key
+//requestMappings should be a map with path as a key
 var requestMappings = {};
 
 function buildMappings( mockDataConfig ){
@@ -14,24 +14,18 @@ function buildMappings( mockDataConfig ){
         return false;
     }
 
-    if(!mockDataConfig.request.url) {
+    if(!mockDataConfig.request.path) {
         return false;
     }
 
-    var url = mockDataConfig.request.url.toLowerCase();
+    var path = mockDataConfig.request.path.toLowerCase();
 
-    _.defaults(mockDataConfig.request, {
-        "method" : "get"
-    });
+    setDefaults(mockDataConfig);
 
-    _.defaults(mockDataConfig.response, {
-        "status" : 200
-    });
-
-    if(requestMappings[url]) {
-        requestMappings[url].push(mockDataConfig);
+    if(requestMappings[path]) {
+        requestMappings[path].push(mockDataConfig);
     } else {
-        requestMappings[url] = [mockDataConfig];
+        requestMappings[path] = [mockDataConfig];
     }
 }
 
@@ -45,10 +39,24 @@ function loadRequestMappings(folder) {
             buildMappings(mockDataConfig);
         });
 
-        util.print(_.size(files) + " of json files found");
+        util.print(_.size(files) + " json mock data files are found and loaded successfully.");
     });
 
     return requestMappings;
 }
 
+function setDefaults(mockDataConfig) {
+    _.defaults(mockDataConfig.request, {
+        "method" : "GET"
+    });
+
+    _.defaults(mockDataConfig.response, {
+        "status" : 200
+    });
+
+    return mockDataConfig;
+}
+
+exports.setDefaults = setDefaults
 exports.loadRequestMappings = loadRequestMappings;
+

@@ -2,7 +2,7 @@
 Pefect companion with angular 1/2 development, and unit mock testing.
 
 ## It is not a Restful Json Server
-Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching url and query parameters and return response which matching you expect?
+Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching path and query parameters and return response which matching you expect?
 
 You probably will be disappointed, because not all but at least majority of them are fancy shinning restful style severs which either return dynamic json in memory or manipulate some text based db files. And obviously, they will all require you to send standard restful style requests and then response with some dynamic results which you might have to think hard to set it up.
 
@@ -51,7 +51,7 @@ Example:
 ```
 {
     "request" : {
-        "url": "test",
+        "path": "test",
         "method" : "get"
     },
     "response" : {
@@ -70,6 +70,15 @@ Example:
 node node_modules/simple-json-replay-server/src/main.js
  ```
 
+## Mock Data Specification
+
+> **Request** 
+
+Key | Value | Description
+---------|----------|---------
+ path | a part of path or full path | You can give partial of path or full path, for example, the full path will be "/api/examples", you can give just "examples" or "example" or "/examples", all of them will match.
+ A2 | B2 | C2
+ A3 | B3 | C3
 
 ## Integrate with your development work flow
 

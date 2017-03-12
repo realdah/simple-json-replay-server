@@ -2,16 +2,16 @@ var _ = require('underscore');
 
 function matchRequests(request, requestMappings) {
     var path = request.path.toLowerCase();
-    var params = request.query;
+    var params = request.query || {};
     var method = request.method;
 
-    var matchingURLs = _.filter(_.keys(requestMappings), function(url){
-        return path.indexOf(url) > -1;
+    var matchingPaths = _.filter(_.keys(requestMappings), function(path){
+        return path.indexOf(path) > -1;
     });
 
     var listOfMockDataConfigures = [];
-    _.each(matchingURLs, function(url) {
-        listOfMockDataConfigures = listOfMockDataConfigures.concat(requestMappings[url]);
+    _.each(matchingPaths, function(path) {
+        listOfMockDataConfigures = listOfMockDataConfigures.concat(requestMappings[path]);
     });
 
     if(listOfMockDataConfigures.length > 0) {
@@ -19,7 +19,7 @@ function matchRequests(request, requestMappings) {
         var bestScore = 0;
 
         var listOfMockDataConfigures = _.filter(listOfMockDataConfigures, function(mockDataConfig){
-             return mockDataConfig.request.method.toUpperCase() === method;
+             return mockDataConfig.request.method.toUpperCase() === method.toUpperCase();
         });
 
         _.each(listOfMockDataConfigures, function(mockDataConfig){

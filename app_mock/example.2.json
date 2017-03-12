@@ -1,12 +1,11 @@
 {
     "request" : {
-        "url": "test",
-        "method" : "get"
+        "path": "test"
     },
     "response" : {
         "status" : 200,
         "data" : {
-            "key" : "value"
+            "message" : "you got it!"
         }
     }
 }

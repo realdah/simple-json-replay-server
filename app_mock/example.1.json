@@ -1,7 +1,6 @@
 {
     "request" : {
-        "url": "test",
-        "method" : "get",
+        "path": "test",
         "params" : {
             "bb" : 123
         }

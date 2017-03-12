@@ -3,11 +3,17 @@ var _ = require('underscore');
 var optionsConfig = {
     "port" : {
         "default" : 8008,
-        "desc" : "port number used by mock replay server"
+        "desc" : "port number used by mock replay server",
+        "type" : "number"
     },
      "folder" : {
         "default" : "app_mock",
         "desc" : "mock data folder, you can give relative or absolute path"
+     },
+     "delay" : {
+         "default" : 0,
+         "desc" : "global settings for delay a response in milliseconds, 0 means no delay, negative value means timeout",
+         "type" : "number"
      }
 };
 
@@ -30,10 +36,19 @@ function parseArguments() {
     });
 
     _.each(args, function(arg) {
-        _.each(optionsConfig, function(value, key){
-            var option = ('--' + key + '=');
-            if(arg.startsWith(option)) {
-                options[key] = arg.replace(option, "");
+        _.each(optionsConfig, function(option, key){
+            var optionName = ('--' + key + '=');
+            if(arg.startsWith(optionName)) {
+                if(option.type == "number") {
+                    var value = Number(arg.replace(optionName, ""));
+                    if(!isNaN(value)) {
+                        options[key] = value;
+                    } else {
+                        console.log(key + " is not a valid number, use default value [" + options[key] + "]\n");
+                    }
+                } else {
+                    options[key] = arg.replace(option, "");
+                }
             }
         });
     });

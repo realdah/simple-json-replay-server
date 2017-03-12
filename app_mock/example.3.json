@@ -1,10 +1,7 @@
 {
     "request" : {
-        "url": "test",
-        "method" : "post",
-        "params" : {
-
-        }
+        "path": "test",
+        "method": "post"
     },
     "response" : {
         "status" : 200,
