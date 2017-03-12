@@ -88,6 +88,7 @@ Now, you can run below shorter command to start mock server
 npm run mockServer
 ```
 
+
 ## Mock Data Specification
 
 > **Request** 
@@ -112,6 +113,8 @@ Key | Value | Optional | Description
  delay | number in milliseconds | Yes | default as **0** which is no delay. you can give **negative value**, which means **timeout**, in this case, will ignore the any other response settings.
  data | a json object map | Yes | you can define the expected json response.
 
+
+
 ## Integrate with your development work flow
 
 As we all know, nowadays, most of frontend projects have been completely seperated from backend projects. 
@@ -130,7 +133,7 @@ I will take two most popular frontend build tools/solutions for example:
 **Webpack** based solution is gaining more popularity, and both angular 2 official and one of most popular tools - **angular-cli** are all using webpack as their build tool.
 
 
-* #### Angular2 with Angular-Cli
+#### Angular2 with Angular-Cli
 
 Please find instruction in below
 
@@ -162,7 +165,7 @@ and then we edit the package.json file's start script to be
 
 now run it with **npm start**
 
-* #### Mannually Using Webpack
+#### Mannually Using Webpack
 
 
 ~~To Be Continue~~
