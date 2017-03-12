@@ -13,7 +13,7 @@ Or, if you have legacy backend API design, which are not strictly following rest
 
  * **Simple command** to launch it with optional port and folder configuration.
  * **Supre Easy to create & maintain data** Create a pure json file in your replay data folder and you should get it right away, no programming is required.
- * **Advanced features** to allow you set more matching rules including request parameter, method, header, cookie etc. 
+ * **Advanced features** to allow you set more matching rules including query parameters, method, header, cookie etc. 
  * **Straight-foward rules** configured in the file, they are almost self explaining.
  * **Fast & Predictable**, Once configured, it will response immediately and consitently.
  * **Simple but still Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call, such as paginiation, error, failure etc.
@@ -76,9 +76,11 @@ node node_modules/simple-json-replay-server/src/main.js
 
 Key | Value | Description
 ---------|----------|---------
- path | a part of path or full path | You can give partial of path or full path, for example, the full path will be "/api/examples", you can give just "examples" or "example" or "/examples", all of them will match.
- A2 | B2 | C2
- A3 | B3 | C3
+ path | part of path or full path | You can give partial of path or full path, for example, the full path is "/api/examples", you can give just "examples" or "example" or "/examples", all of them will match.
+ method | http methods | default as **get**
+ query | a json map with key value pairs | you can only give the keys which you want to match. 
+
+
 
 ## Integrate with your development work flow
 

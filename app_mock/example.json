@@ -2,7 +2,7 @@
     "request" : {
         "path": "test",
         "method" : "get",
-        "params" : {
+        "query" : {
             "aa" : "123"
         }
     },

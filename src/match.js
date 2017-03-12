@@ -2,7 +2,7 @@ var _ = require('underscore');
 
 function matchRequests(request, requestMappings) {
     var path = request.path.toLowerCase();
-    var params = request.query || {};
+    var query = request.query || {};
     var method = request.method;
 
     var matchingPaths = _.filter(_.keys(requestMappings), function(path){
@@ -26,9 +26,9 @@ function matchRequests(request, requestMappings) {
 
             var score = 0;
 
-            //check params
-            _.each(mockDataConfig.request.params,function(value, key){
-                if(params[key] == value) {
+            //check query
+            _.each(mockDataConfig.request.query,function(value, key){
+                if(query[key] == value) {
                     score += 2;
                 } else {
                     score = -99999;

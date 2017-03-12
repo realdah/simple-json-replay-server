@@ -1,7 +1,7 @@
 {
     "request" : {
         "path": "test",
-        "params" : {
+        "query" : {
             "bb" : 123
         }
     },
