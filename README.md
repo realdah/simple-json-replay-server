@@ -1,5 +1,5 @@
 # Simple JSON Replay Server
-Pefect companion with angular 1/2 development, and unit mock testing.
+Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs.
 
 ## It is not a Restful Json Server
 Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching path and query parameters and return response which matching you expect?
