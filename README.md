@@ -52,7 +52,11 @@ Example:
 {
     "request" : {
         "path": "test",
-        "method" : "get"
+        "method" : "get",
+        "query" : {
+            "param1" : "value1 to be matched",
+            "param2" : "value2 to be matched"
+        }
     },
     "response" : {
         "status" : 200,

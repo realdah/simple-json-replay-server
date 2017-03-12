@@ -19,10 +19,17 @@ var requestMappings = mockDataLoader.loadRequestMappings(options.folder);
 
 app.all('*', function (req, res) {
     var mockDataConfig = match.matchRequests(req, requestMappings);
+
     if (mockDataConfig) {
-        res.header("Content-Type", "application/json")
-            .status(mockDataConfig.response.status)
-            .json(mockDataConfig.response.data);
+        let delay = mockDataConfig.response.delay || options.delay;
+
+        if(delay != 0) {
+            setTimeout(function() {
+                response(res, mockDataConfig);
+            }, delay);
+        } else {
+            response(res, mockDataConfig);
+        }
 
     } else {
         res.header("Content-Type", "application/json").status(404).json(
@@ -37,4 +44,10 @@ var server = app.listen(options.port, function () {
     util.print('Server is listening to port: %s', server.address().port);
     util.print('Json data folder: %s\n', options.folder);
 });
+
+function response(res, mockDataConfig) {
+    res.header("Content-Type", "application/json")
+                .status(mockDataConfig.response.status)
+                .json(mockDataConfig.response.data);
+}
 
