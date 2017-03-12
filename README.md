@@ -133,7 +133,7 @@ I will take two most popular frontend build tools/solutions for example:
 2. **Grunt**   (old world favorite , **Gulp** as well)
 
 
-### **1. Webpack** 
+### ✦ Webpack 
 **Webpack** based solution is gaining more popularity, and both angular 2 official and one of most popular tools - **angular-cli** are all using webpack as their build tool.
 
 
@@ -201,7 +201,7 @@ proxy: {
 For more advanced proxy configuration, please read offical document: <https://webpack.js.org/configuration/dev-server/#devserver-proxy>
 
 
-### **2. Grunt** 
+### ✦ Grunt 
 
 If your project is still using **grunt** or **gulp**, you can look at this charpter. I will not give example for **gulp**, however, the approach would be very much similiar.
 
