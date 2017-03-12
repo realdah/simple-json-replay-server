@@ -1,4 +1,4 @@
-# Simple JSON Replay Server
+# Simple JSON Replay Server ❤️
 Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs.
 
 ## It is not a Restful Json Server
@@ -133,7 +133,7 @@ I will take two most popular frontend build tools/solutions for example:
 **Webpack** based solution is gaining more popularity, and both angular 2 official and one of most popular tools - **angular-cli** are all using webpack as their build tool.
 
 
-#### Angular2 with Angular-Cli
+#### _Angular2 with Angular-Cli_
 
 Please find instruction in below
 
@@ -166,7 +166,7 @@ and then we edit the package.json file's start script to be
 
 now run it with **npm start**
 
-#### Mannually Using Webpack
+#### _Mannually Using Webpack_
 
 
 ~~To Be Continue~~
