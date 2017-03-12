@@ -39,7 +39,7 @@ mkdir app_mock
 
 > **Create mock data config files**    
 
-Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to hold this file**.
+Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to organize your mock data files**. Our application only look for files ending with ".json" in app_mock folder.
 
 Once start replay server, you can hit <http://localhost:8008/test> to see the result.
 
@@ -73,6 +73,20 @@ Example:
  ```
 node node_modules/simple-json-replay-server/src/main.js
  ```
+
+> **Config a shortcut in package.json (Nice to have Step)**
+
+Open your package.json of you frontend application
+```
+  "scripts": {
+    "mockServer": "node node_modules/simple-json-replay-server/src/main.js"
+  }
+```  
+Now, you can run below shorter command to start mock server
+
+```
+npm run mockServer
+```
 
 ## Mock Data Specification
 
