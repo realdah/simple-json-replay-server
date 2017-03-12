@@ -146,9 +146,10 @@ Say we have a server running on http://localhost:8008/api and we want all calls 
 
 We create a file next to projects package.json called proxy.conf.json with the content
 
+
 ```
 {
-  "/api": {
+  "/api/*": { //Note, this wild match is the key to make it work (Jeff)
     "target": "http://localhost:8008",
     "secure": false
   }
