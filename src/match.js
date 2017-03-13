@@ -1,12 +1,15 @@
 var _ = require('underscore');
 
+var NOT_MATCH = -999999;
+
 function matchRequests(request, requestMappings) {
     var path = request.path.toLowerCase();
     var query = request.query || {};
+    var headers = request.headers || {};
     var method = request.method;
 
-    var matchingPaths = _.filter(_.keys(requestMappings), function(path){
-        return path.indexOf(path) > -1;
+    var matchingPaths = _.filter(_.keys(requestMappings), function(pathMapping){
+        return path.indexOf(pathMapping) > -1;
     });
 
     var listOfMockDataConfigures = [];
@@ -29,12 +32,22 @@ function matchRequests(request, requestMappings) {
             //check query
             _.each(mockDataConfig.request.query,function(value, key){
                 if(query[key] == value) {
-                    score += 2;
+                    score += 1000;
                 } else {
-                    score = -99999;
+                    score = NOT_MATCH;
                     return;
                 }
             });
+
+            // //check headers
+            // _.each(mockDataConfig.request.headers,function(value, key){
+            //     if(headers[key] == value) {
+            //         score += 100;
+            //     } else {
+            //         score = NOT_MATCH;
+            //         return;
+            //     }
+            // });
 
             if(score >= bestScore) {
                 bestScore = score;
