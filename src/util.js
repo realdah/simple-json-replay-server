@@ -1,7 +1,7 @@
-function print(message, ...args) {
+function print(message, option) {
     process.stdout.write("[SJRS] ");
-    if(args) {
-        console.log(message, ...args);
+    if(option) {
+        console.log(message, option);
     } else {
         console.log(message);
     }
