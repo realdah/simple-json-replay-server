@@ -28,7 +28,6 @@ function buildMappings( mockDataConfig ){
         requestMappings[path] = [mockDataConfig];
     }
 
-    return requestMappings;
 }
 
 function loadRequestMappings(folder) {
@@ -59,6 +58,19 @@ function setDefaults(mockDataConfig) {
     return mockDataConfig;
 }
 
+function getRequestMappings() {
+    return requestMappings;
+}
+
+function reset() {
+    requestMappings = {};
+}
+
+//used by unit testing
+exports.reset = reset;
+exports.getRequestMappings = getRequestMappings;
 exports.buildMappings = buildMappings;
+
+//used by app
 exports.loadRequestMappings = loadRequestMappings;
 

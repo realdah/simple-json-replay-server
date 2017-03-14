@@ -30,12 +30,12 @@ function matchRequests(request, requestMappings) {
             var score = 0;
 
             //check query
-            _.each(mockDataConfig.request.query,function(value, key){
-                if(query[key] == value) {
+            _.each(query,function(value, key){
+                var configValue = mockDataConfig.request.query[key];
+                if(configValue != undefined && configValue == value) {  //if key exists and match
                     score += 1000;
                 } else {
                     score = NOT_MATCH;
-                    return;
                 }
             });
 

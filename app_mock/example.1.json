@@ -2,13 +2,14 @@
     "request" : {
         "path": "test",
         "query" : {
-            "bb" : 123
+            "bb" : 123,
+            "aa" : 345
         }
     },
     "response" : {
         "status" : 200,
         "data" : {
-            "bbb" : "example 1"
+            "bb" : "bb : 123"
         }
     }
 }

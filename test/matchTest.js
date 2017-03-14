@@ -30,9 +30,13 @@ describe('match', function() {
 
         var requestMappings;
 
-        _.each([configPathGet, configSamePathGet, configSamePathPost], function(config){
-            requestMappings = mockDataLoader.buildMappings(config);
-        })
+        beforeEach(function(){
+            mockDataLoader.reset();
+            _.each([configPathGet, configSamePathGet, configSamePathPost], function(config){
+                mockDataLoader.buildMappings(config);
+            })
+            requestMappings = mockDataLoader.getRequestMappings();
+        });
 
         it('matchRequests should match path with GET method', function() {
             var request = {
@@ -69,11 +73,91 @@ describe('match', function() {
 
 
     describe('matching query', function() {
-        it('matchRequests should match query', function() {
+
+        var configQuery1 = {
+            "request" : {
+                "path": "testQuery",
+                "query" : {
+                    "param1" : "value1",
+                    "param2" : "value2"
+                }
+            },
+            "response" : {}
+        };
+
+        var configQuery2 = {
+            "request" : {
+                "path": "testQuery",
+                "query" : {
+                    "param2" : "value2",
+                    "param3" : "value3"
+                }
+            },
+            "response" : {}
+        };
+
+        var requestMappings;
+
+        beforeEach(function(){
+            mockDataLoader.reset();
+            _.each([configQuery1, configQuery2], function(config){
+                mockDataLoader.buildMappings(config);
+            })
+            requestMappings = mockDataLoader.getRequestMappings();
+        });
+
+        it('matchRequests should match query with match', function() {
             var request = {
-                "path" : "/test"
+                "path" : "/testQuery",
+                "method" : "GET",
+                "query" : {
+                    "param1" : "value1"
+                }
             };
-           // assert.deepEqual(match.matchRequests(request, requestMappings), config1);
+
+            var request1 = {
+                "path" : "/testQuery",
+                "method" : "GET",
+                "query" : {
+                    "param1" : "value1",
+                    "param2" : "value2"
+                }
+            };
+
+            var request2 = {
+                "path" : "/testQuery",
+                "method" : "GET",
+                "query" : {
+                    "param3" : "value3"
+                }
+            };
+
+           assert.deepEqual(match.matchRequests(request, requestMappings), configQuery1);
+           assert.deepEqual(match.matchRequests(request1, requestMappings), configQuery1);
+           assert.deepEqual(match.matchRequests(request2, requestMappings), configQuery2);
+        });
+
+        it('matchRequests should not match query if any param not match', function() {
+            var request = {
+                "path" : "/testQuery",
+                "method" : "GET",
+                "query" : {
+                    "param1" : "value2"
+                }
+            };
+
+            var request1 = {
+                "path" : "/testQuery",
+                "method" : "GET",
+                "query" : {
+                    "param1" : "value1",
+                    "param2" : "value3"
+                }
+            };
+            assert.notDeepEqual(match.matchRequests(request, requestMappings), configQuery1);
+            assert.notDeepEqual(match.matchRequests(request1, requestMappings), configQuery1);
+            assert.notDeepEqual(match.matchRequests(request, requestMappings), configQuery2);
+           assert.notDeepEqual(match.matchRequests(request1, requestMappings), configQuery2);
         });
     });
 });

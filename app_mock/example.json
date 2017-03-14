@@ -9,7 +9,7 @@
     "response" : {
         "status" : 200,
         "data" : {
-            "key" : "example zero"
+            "key" : "aa : 123"
         }
     }
 }
