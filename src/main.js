@@ -21,7 +21,7 @@ app.all('*', function (req, res) {
     var mockDataConfig = match.matchRequests(req, requestMappings);
 
     if (mockDataConfig) {
-        let delay = mockDataConfig.response.delay || options.delay;
+        var delay = mockDataConfig.response.delay || options.delay;
 
         if(delay != 0) {
             setTimeout(function() {

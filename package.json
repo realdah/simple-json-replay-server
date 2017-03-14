@@ -6,6 +6,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "engines" :{
+    "node" : ">=4.0.0" 
+  },
   "keywords": [
     "angular",
     "angular2",
