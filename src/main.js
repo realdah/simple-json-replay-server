@@ -15,6 +15,8 @@ app.set('json spaces', 4);
 
 var options = optionParser.parseArguments();
 
+util.printVersion();
+
 var requestMappings = mockDataLoader.loadRequestMappings(options.folder);
 
 app.all('*', function (req, res) {
