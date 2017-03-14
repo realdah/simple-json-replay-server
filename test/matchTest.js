@@ -78,8 +78,7 @@ describe('match', function() {
             "request" : {
                 "path": "testQuery",
                 "query" : {
-                    "param1" : "value1",
-                    "param2" : "value2"
+                    "param1" : "value1"
                 }
             },
             "response" : {}
@@ -89,8 +88,18 @@ describe('match', function() {
             "request" : {
                 "path": "testQuery",
                 "query" : {
-                    "param2" : "value2",
-                    "param3" : "value3"
+                    "param1" : "value1",
+                    "param2" : "value2"
+                }
+            },
+            "response" : {}
+        };
+
+        var configQuery3 = {
+            "request" : {
+                "path": "testQuery",
+                "query" : {
+                    "param1" : "value2"
                 }
             },
             "response" : {}
@@ -100,7 +109,7 @@ describe('match', function() {
 
         beforeEach(function(){
             mockDataLoader.reset();
-            _.each([configQuery1, configQuery2], function(config){
+            _.each([configQuery1, configQuery2, configQuery3], function(config){
                 mockDataLoader.buildMappings(config);
             })
             requestMappings = mockDataLoader.getRequestMappings();
@@ -111,7 +120,8 @@ describe('match', function() {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
-                    "param1" : "value1"
+                    "param1" : "value1",
+                    "param2" : "value3"
                 }
             };
 
@@ -128,13 +138,24 @@ describe('match', function() {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
+                    "param1" : "value1",
+                    "param2" : "value2",
                     "param3" : "value3"
                 }
             };
 
+            var request3 = {
+                "path" : "/testQuery",
+                "method" : "GET",
+                "query" : {
+                    "param1" : "value2"
+                }
+            };
+
            assert.deepEqual(match.matchRequests(request, requestMappings), configQuery1);
-           assert.deepEqual(match.matchRequests(request1, requestMappings), configQuery1);
+           assert.deepEqual(match.matchRequests(request1, requestMappings), configQuery2);
            assert.deepEqual(match.matchRequests(request2, requestMappings), configQuery2);
+           assert.deepEqual(match.matchRequests(request3, requestMappings), configQuery3);
         });
 
         it('matchRequests should not match query if any param not match', function() {
@@ -150,14 +171,14 @@ describe('match', function() {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
-                    "param1" : "value1",
+                    "param1" : "value2",
                     "param2" : "value3"
                 }
             };
             assert.notDeepEqual(match.matchRequests(request, requestMappings), configQuery1);
             assert.notDeepEqual(match.matchRequests(request1, requestMappings), configQuery1);
             assert.notDeepEqual(match.matchRequests(request, requestMappings), configQuery2);
-           assert.notDeepEqual(match.matchRequests(request1, requestMappings), configQuery2);
+            assert.notDeepEqual(match.matchRequests(request1, requestMappings), configQuery2);
         });
     });
 });

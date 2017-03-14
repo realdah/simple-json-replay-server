@@ -30,10 +30,31 @@ function matchRequests(request, requestMappings) {
             var score = 0;
 
             //check query
-            _.each(query,function(value, key){
-                var configValue = mockDataConfig.request.query[key];
-                if(configValue != undefined && configValue == value) {  //if key exists and match
-                    score += 1000;
+            // _.each(query,function(value, key){
+
+            //     if(!mockDataConfig.request.query) {
+            //         //if not defined query object, ignore
+            //         return;
+            //     }
+
+            //     var configValue = mockDataConfig.request.query[key];
+            //     if(configValue != undefined ) { //if key exists
+            //         if(configValue == value) { 
+            //             score += 1000;
+            //         } else {
+            //             score = NOT_MATCH;
+            //         }
+            //     }
+            // });
+
+            _.each(mockDataConfig.request.query,function(value, key){
+
+                if(query[key] != undefined ) { //if key exists
+                    if(query[key] == value) { 
+                        score += 1000;
+                    } else {
+                        score = NOT_MATCH;
+                    }
                 } else {
                     score = NOT_MATCH;
                 }
