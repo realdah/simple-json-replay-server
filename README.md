@@ -1,4 +1,5 @@
-# Simple JSON Replay Server ❤️  [![Build Status](https://travis-ci.org/realdah/simple-json-replay-server.svg?branch=master)](https://travis-ci.org/realdah/simple-json-replay-server) [![npm version](https://badge.fury.io/js/simple-json-replay-server.svg)](https://badge.fury.io/js/simple-json-replay-server)
+# Simple JSON Replay Server ❤️  [![Build Status](https://travis-ci.org/realdah/simple-json-replay-server.svg?branch=master)](https://travis-ci.org/realdah/simple-json-replay-server) [![npm version](https://badge.fury.io/js/simple-json-replay-server.svg)](https://badge.fury.io/js/simple-json-replay-server) [![Node version](https://img.shields.io/node/v/simple-json-replay-server.svg?style=flat)](http://nodejs.org/download/)
+
 Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs.
 
 ## It is not a Restful Json Server
