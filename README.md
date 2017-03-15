@@ -1,7 +1,5 @@
-# Simple JSON Replay Server ❤️
+# Simple JSON Replay Server ❤️  [![Build Status](https://travis-ci.org/realdah/simple-json-replay-server.svg?branch=master)](https://travis-ci.org/realdah/simple-json-replay-server) [![npm version](https://badge.fury.io/js/simple-json-replay-server.svg)](https://badge.fury.io/js/simple-json-replay-server)
 Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs.
-
-> Current Version: 0.0.7
 
 ## It is not a Restful Json Server
 Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching path and query parameters and return response which matching you expect?
