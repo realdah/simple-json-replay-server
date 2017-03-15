@@ -1,7 +1,7 @@
 # Simple JSON Replay Server ❤️
 Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs.
 
-> Current Version: 0.0.6
+> Current Version: 0.0.7
 
 ## It is not a Restful Json Server
 Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching path and query parameters and return response which matching you expect?
@@ -98,17 +98,21 @@ npm run mockServer
 
 ## Mock Data Specification
 
-### ✦ Request
+### ✦ Request (Filtering Rules)
 
-The request object can be defined as below propertities.
-You can possibly define as many as mock data configs which match the same path. However, the mock sever will return the best matching mock data based on a ranking algorithm. if more than one mock data get the same matching ranking, we will not guarantee which one will return.
+The request object can be defined as described in below table.
+
+
+You can define as many as mock data configs which map to the same path. Then, you can define more filtering rules which can narrow down the results.
+
+However, if more than one mock data match the same filtering criteria, we will not guarantee which one will return.
 
 
 Key | Value | Optional | Description
 ---------|----------|----------|---------
- path | part of path or full path | No | You can give part of path or full path, for example, the full path is "/api/examples", you can give just "examples" or "example" or "/examples", all of them will match.
- method | http methods | Yes | default as **get**
- query | a json map with key value pairs | Yes | you can only give keys which you want to match. default as **undefined**
+ path | part of path or full path | No | You can give partial of path or full path, for example, the full path is "/api/examples", you can give just "examples" or "example" or "api/examples", all of them will match.
+ method | http methods | Yes | Default as **get**
+ query | a json map with key value pairs | Yes | Default as **undefined**. You can think about this is a filtering logic.  As long as you defined a key-value, it will only allow request which contains this query parameter and same value to pass through.
 
 ### ✦ Response
 
