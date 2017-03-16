@@ -73,4 +73,3 @@ exports.buildMappings = buildMappings;
 
 //used by app
 exports.loadRequestMappings = loadRequestMappings;
-
