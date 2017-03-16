@@ -5,7 +5,7 @@ var util = require("./util");
 var optionParser = require("./optionParser");
 var mockDataLoader = require("./mockDataLoader");
 var match = require("./match");
-
+var watcher = require('./watcher');
 var app = express();
 
 //beautify the JSON output from mock server, this will give a lot of convenient during development. 
@@ -53,3 +53,4 @@ function response(res, mockDataConfig) {
                 .json(mockDataConfig.response.data);
 }
 
+watcher.startWatch(options.folder,requestMappings);
