@@ -1,19 +1,21 @@
 var chokidar = require('chokidar');
 var mockDataLoader = require("./mockDataLoader");
+var util = require("./util");
 
 var log = console.log;
 
-function startWatch(folder, requestMapping) {
+function startWatching(folder) {
 
     var watcher = chokidar.watch(folder, {
         ignored: /[\/\\]\./, persistent: true
     });
-    watcher
-        .on('change', function (path) {
-            console.log("Change Happened", "Initiating reload...")
-            requestMapping = mockDataLoader.loadRequestMappings(folder);
+
+    watcher.on('change', function (path) {
+            util.print("Change detected for mock data, reload...");
+            mockDataLoader.reset();
+            mockDataLoader.loadRequestMappings(folder);
         })
 
 }
-exports.startWatch = startWatch;
+exports.startWatching = startWatching;
 

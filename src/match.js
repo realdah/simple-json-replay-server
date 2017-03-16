@@ -29,24 +29,6 @@ function matchRequests(request, requestMappings) {
 
             var score = 0;
 
-            //check query
-            // _.each(query,function(value, key){
-
-            //     if(!mockDataConfig.request.query) {
-            //         //if not defined query object, ignore
-            //         return;
-            //     }
-
-            //     var configValue = mockDataConfig.request.query[key];
-            //     if(configValue != undefined ) { //if key exists
-            //         if(configValue == value) { 
-            //             score += 1000;
-            //         } else {
-            //             score = NOT_MATCH;
-            //         }
-            //     }
-            // });
-
             _.each(mockDataConfig.request.query,function(value, key){
 
                 if(query[key] != undefined ) { //if key exists
@@ -59,16 +41,6 @@ function matchRequests(request, requestMappings) {
                     score = NOT_MATCH;
                 }
             });
-
-            // //check headers
-            // _.each(mockDataConfig.request.headers,function(value, key){
-            //     if(headers[key] == value) {
-            //         score += 100;
-            //     } else {
-            //         score = NOT_MATCH;
-            //         return;
-            //     }
-            // });
 
             if(score >= bestScore) {
                 bestScore = score;

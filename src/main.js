@@ -17,9 +17,11 @@ var options = optionParser.parseArguments();
 
 util.printVersion();
 
-var requestMappings = mockDataLoader.loadRequestMappings(options.folder);
+mockDataLoader.loadRequestMappings(options.folder);
 
 app.all('*', function (req, res) {
+    var requestMappings = mockDataLoader.getRequestMappings();
+
     var mockDataConfig = match.matchRequests(req, requestMappings);
 
     if (mockDataConfig) {
@@ -53,4 +55,5 @@ function response(res, mockDataConfig) {
                 .json(mockDataConfig.response.data);
 }
 
-watcher.startWatch(options.folder,requestMappings);
+//start watching the changes.
+watcher.startWatching(options.folder);
