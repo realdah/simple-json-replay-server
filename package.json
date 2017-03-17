@@ -1,6 +1,6 @@
 {
   "name": "simple-json-replay-server",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A simple json replay server which can be used for standalone frontend web application (angular especially) when development.  Simply put the url & parameters & response json data, then hit the url in browser or from your web application, whenever it matches the url and parameters, it will return the best match json data.",
   "main": "main.js",
   "scripts": {
@@ -33,10 +33,10 @@
     "express": "^4.15.0",
     "glob": "^7.1.1",
     "underscore": "^1.8.3",
-    "chokidar": "^1.6.1"
+    "chokidar": "^1.6.1",
+    "rx": "^4.1.0"
   },
   "devDependencies": {
-    "mocha": "^3.2.0",
-    "rx": "^4.1.0"
+    "mocha": "^3.2.0"
   }
 }
