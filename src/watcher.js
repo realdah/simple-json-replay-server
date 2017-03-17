@@ -1,9 +1,7 @@
 var chokidar = require('chokidar');
-var Rx = require( 'rx' );
+var Rx = require('rx');
 var mockDataLoader = require("./mockDataLoader");
 var util = require("./util");
-
-var log = console.log;
 
 function startWatching(folder) {
 
@@ -12,20 +10,20 @@ function startWatching(folder) {
     });
 
     //Only reload the files until user stops changing files after 800 milliseconds, to avoid repeat loading when saving/copying multiple files.
-    var changedFiles = Rx.Observable.fromEvent( dirWatcher, 'change' ).debounce(function (x) { return Rx.Observable.timer(800); });
+    var changedFiles = Rx.Observable.fromEvent(dirWatcher, 'change').debounce(function (x) { return Rx.Observable.timer(800); });
 
     var subscription = changedFiles.subscribe(
-    function( filename ) {
+        function (filename) {
             util.print("Change detected for mock data, reload...");
             mockDataLoader.reset();
             mockDataLoader.loadRequestMappings(folder);
-    },
-    function( err ) {
-        console.log( 'Error: ' + err );
-    },
-    function () {
-        console.log( 'Completed' );
-    });
+        },
+        function (err) {
+            console.log('Error: ' + err);
+        },
+        function () {
+            console.log('Completed');
+        });
 }
 exports.startWatching = startWatching;
 
