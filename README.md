@@ -214,7 +214,7 @@ If your project is still using **grunt** or **gulp**, you can look at this charp
 Although you can use **grunt-contrib-connect** with some magic middleware settings to make it work,
 I would suggest you to use **grunt-connect-proxy** plug-in which kind simplify the configurations.
 
-You can find it in here: <https://github.com/drewzboto/grunt-connect-proxy>
+You can find more details in here: <https://github.com/drewzboto/grunt-connect-proxy>
 
 ```
 grunt.initConfig({
