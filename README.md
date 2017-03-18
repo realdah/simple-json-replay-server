@@ -211,6 +211,29 @@ For more advanced proxy configuration, please read offical document: <https://we
 
 If your project is still using **grunt** or **gulp**, you can look at this charpter. I will not give example for **gulp**, however, the approach would be very much similiar.
 
+Although you can use **grunt-contrib-connect** with some magic middleware settings to make it work,
+I would suggest you to use **grunt-connect-proxy** plug-in which really simplify the configurations.
 
+You can find it in here: <https://github.com/drewzboto/grunt-connect-proxy>
 
-~~To Be Continue~~
+```
+grunt.initConfig({
+    connect: {
+        server: {
+            options: {
+                port: 9000,
+                hostname: 'localhost'
+            },
+            proxies: [
+                {
+                    context: '/api',
+                    host: '127.0.0.1',
+                    port: 8008,
+                    https: false
+                }
+            ]
+        }
+    }
+})
+```
+
