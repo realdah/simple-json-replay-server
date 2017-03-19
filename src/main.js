@@ -6,12 +6,14 @@ var optionParser = require("./optionParser");
 var mockDataLoader = require("./mockDataLoader");
 var match = require("./match");
 var watcher = require('./watcher');
+var bodyParser = require('body-parser');
 var app = express();
 
 //beautify the JSON output from mock server, this will give a lot of convenient during development. 
 //it is not a production environment, performance impact is negligible.
-
 app.set('json spaces', 4);
+
+initialBodyParsers(app);
 
 var options = optionParser.parseArguments();
 
@@ -39,7 +41,7 @@ app.all('*', function (req, res) {
         res.header("Content-Type", "application/json").status(404).json(
             {
                 error: 'Can not find matching mock data',
-                req: _.pick(req, 'path', 'method', 'query', 'cookies', 'headers')
+                req: _.pick(req, 'path', 'method', 'query', 'body')  //'cookies', 'headers'
             });
     }
 });
@@ -49,11 +51,20 @@ var server = app.listen(options.port, function () {
     util.print('Json data folder: %s\n', options.folder);
 });
 
+//start watching the changes.
+watcher.startWatching(options.folder);
+
+//it says 
+function initialBodyParsers(app) {
+    // parse application/json
+    app.use(bodyParser.json());
+    // parse application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: false }));
+}
+
 function response(res, mockDataConfig) {
     res.header("Content-Type", "application/json")
                 .status(mockDataConfig.response.status)
                 .json(mockDataConfig.response.data);
 }
 
-//start watching the changes.
-watcher.startWatching(options.folder);

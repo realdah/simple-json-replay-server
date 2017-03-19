@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node src/main.js",
-    "test": "mocha"
+    "test": "mocha --recursive"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -30,11 +30,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "chokidar": "^1.6.1",
     "express": "^4.15.0",
     "glob": "^7.1.1",
-    "underscore": "^1.8.3",
-    "chokidar": "^1.6.1",
-    "rx": "^4.1.0"
+    "rx": "^4.1.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "mocha": "^3.2.0"
