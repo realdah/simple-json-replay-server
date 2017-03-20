@@ -54,7 +54,8 @@ var server = app.listen(options.port, function () {
 //start watching the changes.
 watcher.startWatching(options.folder);
 
-//it says 
+//it says there might be potential cross site scripting attack if we declare global body parsers for all requests.
+//However, since the mock server is really nothing but a replay with hardcoded data, this is not a concern for us.
 function initialBodyParsers(app) {
     // parse application/json
     app.use(bodyParser.json());
