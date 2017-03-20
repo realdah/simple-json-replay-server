@@ -1,11 +1,13 @@
 var _ = require('underscore');
+var util = require('./util');
 
 var NOT_MATCH = -999999;
 
 function matchRequests(request, requestMappings) {
     var path = request.path.toLowerCase();
-    var query = request.query || {};
-    var headers = request.headers || {};
+    var query = request.query;
+    var body = request.body;
+    var headers = request.headers;
     var method = request.method;
 
     var matchingPaths = _.filter(_.keys(requestMappings), function(pathMapping){
@@ -27,20 +29,19 @@ function matchRequests(request, requestMappings) {
 
         _.each(listOfMockDataConfigures, function(mockDataConfig){
 
-            var score = 0;
+            var queryScore = util.partialContains(query, mockDataConfig.request.query);
 
-            _.each(mockDataConfig.request.query,function(value, key){
+            if(queryScore < 0) {
+                return;
+            }
 
-                if(query[key] != undefined ) { //if key exists
-                    if(query[key] == value) { 
-                        score += 1000;
-                    } else {
-                        score = NOT_MATCH;
-                    }
-                } else {
-                    score = NOT_MATCH;
-                }
-            });
+            var bodyScore = util.partialContains(body, mockDataConfig.request.body);
+
+            if(bodyScore < 0) {
+                return;
+            }
+
+            var score = queryScore + bodyScore;
 
             if(score >= bestScore) {
                 bestScore = score;

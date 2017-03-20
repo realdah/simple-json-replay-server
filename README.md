@@ -104,14 +104,15 @@ The request object can be defined as described in below table.
 
 You can define as many as mock data configs which map to the same path. Then, you can define more filtering rules which can narrow down the results.
 
-However, if more than one mock data match the same filtering criteria, we will not guarantee which one will return.
+However, if more than one mock data match the same number of filtering criteria (for query/body, each key is consider as seperate criteria), we will not guarantee which one will return.
 
 
 Key | Value | Optional | Description
 ---------|----------|----------|---------
  path | part of path or full path | No | You can give partial of path or full path, for example, the full path is "/api/examples", you can give just "examples" or "example" or "api/examples", all of them will match.
  method | http methods | Yes | Default as **get**
- query | a json map with key value pairs | Yes | Default as **undefined**. You can think about this is a filtering logic.  As long as you defined a key-value, it will only allow request which contains this query parameter and same value to pass through.
+ query | key value pairs | Yes | Default as **undefined**. You can think about this is a filtering logic.  As long as you defined a key-value, it will only allow request which contains this query parameter and same value to pass through.
+ body | a json map | Yes | Default as **undefined**. you can have partial values in multiple layers, it will only try to match partial branch of the value till the end. So far, only support **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded).
 
 ### ✦ Response
 

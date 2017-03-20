@@ -48,7 +48,7 @@ describe('match', function() {
             requestMappings = mockDataLoader.getRequestMappings();
         });
 
-        it('matchRequests should match query with match', function() {
+        it('matchRequests should match query', function() {
             var request = {
                 "path" : "/testQuery",
                 "method" : "GET",
