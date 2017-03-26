@@ -240,6 +240,6 @@ grunt.initConfig({
 
 ## Release Note
 
-Version Number | Description
+Version | Description
 ---------|----------
  0.0.10 | Include **body** mapping for **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded)
