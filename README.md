@@ -3,7 +3,7 @@
 Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs.
 
 ## It is not a Restful Json Server
-Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will just matching path and query parameters and return response which matching you expect?
+Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will return json responses by matching some simple filtering criteria in requested parameters (such as query, headers, post body etc)?
 
 You probably will be disappointed, because not all but at least majority of them are fancy shinning restful style severs which either return dynamic json in memory or manipulate some text based db files. And obviously, they will all require you to send standard restful style requests and then response with some dynamic results which you might have to think hard to set it up.
 
@@ -42,7 +42,7 @@ mkdir app_mock
 
 ### ✦ **Create mock data config files**    
 
-Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to organize your mock data files**. Our application only look for files ending with ".json" in app_mock folder.
+Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to organize your mock data files**. The mock server will only look for files ending with ".json" in app_mock folder recursively.
 
 Once start replay server, you can hit <http://localhost:8008/test> to see the result.
 
@@ -102,9 +102,9 @@ npm run mockServer
 The request object can be defined as described in below table.
 
 
-You can define as many as mock data configs which map to the same path. Then, you can define more filtering rules which can narrow down the results.
+You can define more than one mock data which are mapping to the same path. And then, you should define different filtering rules which can narrow down the results.
 
-However, if more than one mock data match the same number of filtering criteria (for query/body, each key is consider as seperate criteria), we will not guarantee which one will return.
+However, if more than one mock data match the same number of filtering criteria (for query/body, each key is consider as seperate criteria), we will not guarantee which mock data will be returned.
 
 
 Key | Value | Optional | Description
@@ -112,7 +112,7 @@ Key | Value | Optional | Description
  path | part of path or full path | No | You can give partial of path or full path, for example, the full path is "/api/examples", you can give just "examples" or "example" or "api/examples", all of them will match.
  method | http methods | Yes | Default as **get**
  query | key value pairs | Yes | Default as **undefined**. You can think about this is a filtering logic.  As long as you defined a key-value, it will only allow request which contains this query parameter and same value to pass through.
- body | a json map | Yes | Default as **undefined**. you can have partial values in multiple layers, it will only try to match partial branch of the value till the end. So far, only support **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded).
+ body | a json map | Yes | Default as **undefined**. you can have partial values in multiple layers, it will only try to match partial branch of the value till the end. So far, only support **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded) when **post**.
 
 ### ✦ Response
 
@@ -238,3 +238,8 @@ grunt.initConfig({
 })
 ```
 
+## Release Note
+
+Version Number | Description
+---------|----------
+ 0.0.10 | Include **body** mapping for **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded)
