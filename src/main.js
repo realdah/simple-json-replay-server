@@ -41,7 +41,7 @@ app.all('*', function (req, res) {
         res.header("Content-Type", "application/json").status(404).json(
             {
                 error: 'Can not find matching mock data',
-                req: _.pick(req, 'path', 'method', 'query', 'body')  //'cookies', 'headers'
+                req: _.pick(req, 'path', 'method', 'query', 'body', 'headers')
             });
     }
 });

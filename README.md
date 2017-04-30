@@ -113,6 +113,7 @@ Key | Value | Optional | Description
  method | http methods | Yes | Default as **get**
  query | key value pairs | Yes | Default as **undefined**. You can think about this is a filtering logic.  As long as you defined a key-value, it will only allow request which contains this query parameter and same value to pass through.
  body | a json map | Yes | Default as **undefined**. you can have partial values in multiple layers, it will only try to match partial branch of the value till the end. So far, only support **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded) when **post**.
+ headers | key value pairs | Yes | default as undefined. Similiar to **query**, if you add any thing in here, it will filter out the data with headers having specific value.  
 
 ### ✦ Response
 
@@ -243,3 +244,4 @@ grunt.initConfig({
 Version | Description
 ---------|----------
  0.0.10 | Include **body** mapping for **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded)
+ 0.0.11 | support filtering by **headers** value.

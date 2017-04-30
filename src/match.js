@@ -41,7 +41,9 @@ function matchRequests(request, requestMappings) {
                 return;
             }
 
-            var score = queryScore + bodyScore;
+            var headerScore = util.partialContains(headers, mockDataConfig.request.headers);
+
+            var score = queryScore + bodyScore + headerScore;
 
             if(score >= bestScore) {
                 bestScore = score;
