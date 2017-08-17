@@ -124,6 +124,7 @@ Key | Value | Optional | Description
  status | http status | Yes | default as **200**
  delay | number in milliseconds | Yes | default as **0** which is no delay. you can give **negative value**, which means **timeout**, in this case, will ignore the any other response settings.
  data | a json object map | Yes | you can define the expected json response.
+ html | a string  | Yes | When you define **html** as response, please note that you should not define **data**, if both **data** & **html** are defined, it will consider only **data**.
 
 
 
@@ -245,3 +246,4 @@ Version | Description
 ---------|----------
  0.0.10 | Include **body** mapping for **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded)
  0.0.11 | support filtering by **headers** value.
+ 0.0.12 | support new response type as **html**

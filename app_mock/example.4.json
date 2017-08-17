@@ -1,0 +1,10 @@
+{
+    "request" : {
+        "path": "html",
+        "method": "get"
+    },
+    "response" : {
+        "status" : 200,
+        "html" : "<html><body>Hello world.</body></html>"
+    }
+}

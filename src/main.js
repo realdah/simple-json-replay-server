@@ -64,8 +64,15 @@ function initialBodyParsers(app) {
 }
 
 function response(res, mockDataConfig) {
-    res.header("Content-Type", "application/json")
-                .status(mockDataConfig.response.status)
-                .json(mockDataConfig.response.data);
+
+    if(mockDataConfig.response.data) { //json data
+        res.header("Content-Type", "application/json")
+                    .status(mockDataConfig.response.status)
+                    .json(mockDataConfig.response.data);
+    } else {  //assume it is html data
+        res.header("Content-Type", "text/html")
+                    .status(mockDataConfig.response.status)
+                    .send(mockDataConfig.response.html);
+    }
 }
 
