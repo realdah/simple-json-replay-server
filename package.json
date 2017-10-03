@@ -10,6 +10,14 @@
   "engines": {
     "node": ">=4.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/realdah/simple-json-replay-server"
+  },
+  "bugs": {
+    "url": "https://github.com/realdah/simple-json-replay-server/issues"
+  },
+  "homepage": "https://github.com/realdah/simple-json-replay-server",
   "keywords": [
     "angular",
     "angular2",
