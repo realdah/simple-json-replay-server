@@ -5,10 +5,10 @@ Pefect companion with single page application development, and unit mock testing
 ## It is not a Restful Json Server
 Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will return json responses by matching some simple filtering criteria in requested parameters (such as query, headers, post body etc)?
 
-You probably will be disappointed, because not all but at least majority of them are fancy shinning restful style severs which either return dynamic json in memory or manipulate some text based db files. And obviously, they will all require you to send standard restful style requests and then response with some dynamic results which you might have to think hard to set it up.
+You probably will be disappointed, because not all but at least majority of them are fancy shinning restful style severs which either returning dynamic json in memory or manipulate some text based db files. And obviously, they will all require you to send standard restful style requests and then response with some dynamic results which you might have to think hard to set it up.
 
 Isn't it overkill? if we just need a mock server for development and unit testing.
-Or, if you have legacy backend API design, which are not strictly following restful specifications.
+Or, if you have legacy backend API design, which are not strictly following restful URL patterns.
 
 ## Simple Features
 
@@ -18,6 +18,7 @@ Or, if you have legacy backend API design, which are not strictly following rest
  * **Straight-foward rules** configured in the file, they are almost self explaining.
  * **Fast & Predictable**, Once configured, it will response immediately and consitently.
  * **Simple but still Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call, such as paginiation, error, failure etc.
+
   
 ## Node Dependency
 Support **node version >= 4.0.0** by not using any **ES6** syntax for a period of time.
