@@ -44,14 +44,15 @@ mkdir app_mock
 
 Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to organize your mock data files**. The mock server will only look for files ending with ".json" in app_mock folder recursively.
 
-Once start replay server, you can hit <http://localhost:8008/test> to see the result.
+Once start replay server, you can hit <http://localhost:8008/test?param1=value1%20to%20be%20matched&param2=value2%20to%20be%20matched> to see the result.
+
 
 > Please note: you are able to config a different port number if it conflicts.
 
-Example: 
-
 
 ```
+example.json
+
 {
     "request" : {
         "path": "test",
