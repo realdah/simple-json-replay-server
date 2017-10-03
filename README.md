@@ -15,9 +15,9 @@ Or, if you have legacy backend API design, which are not strictly following rest
  * **Decoupled with production code** This json replay server will run only side by side in local development/testing environment on demand, **Zero** code change required in your production code.
  * **Simple command** to launch it with optional port and folder configuration.
  * **Supre Easy to create & maintain data** Create a pure json file in your replay data folder and you should get it right away, no programming is required.
- * **Advanced features** to allow you set more matching rules including query parameters, method, header, cookie etc. 
+ * **Advanced features** to allow you set more matching rules including query parameters, method, header, body, cookie etc. 
  * **Straight-foward rules** configured in the file, they are almost self explaining.
- * **Fast & Predictable**, Once configured, it will response immediately and consitently.
+ * **Fast & Predictable**, Once configured, it will response immediately and consistently.
  * **Simple but still Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call, such as paginiation, error, failure etc.
 
 ## Sampe Use Cases
