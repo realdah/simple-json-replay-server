@@ -19,6 +19,9 @@ Or, if you have legacy backend API design, which are not strictly following rest
  * **Fast & Predictable**, Once configured, it will response immediately and consitently.
  * **Simple but still Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call, such as paginiation, error, failure etc.
 
+## Sampe Use Cases
+
+https://github.com/realdah/simple-json-replay-server/wiki/Some-use-case-scenarios-for-demonstrating-how-to-use-this-tool
   
 ## Node Dependency
 Support **node version >= 4.0.0** by not using any **ES6** syntax for a period of time.
