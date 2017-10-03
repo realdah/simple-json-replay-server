@@ -1,6 +1,6 @@
 # Simple JSON Replay Server ❤️  [![Build Status](https://travis-ci.org/realdah/simple-json-replay-server.svg?branch=master)](https://travis-ci.org/realdah/simple-json-replay-server) [![npm version](https://badge.fury.io/js/simple-json-replay-server.svg)](https://badge.fury.io/js/simple-json-replay-server) [![Node version](https://img.shields.io/node/v/simple-json-replay-server.svg?style=flat)](http://nodejs.org/download/)
 
-Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs.
+Pefect companion with single page application development, and unit mock testing. Especially designed for angularjs 1 and 2 & reactjs. Zero Code invasion to your production code.
 
 ## It is not a Restful Json Server
 Have you spent a lot of time trying to find a **simple straight-forward file based json replay server** which will return json responses by matching some simple filtering criteria in requested parameters (such as query, headers, post body etc)?
@@ -12,6 +12,7 @@ Or, if you have legacy backend API design, which are not strictly following rest
 
 ## Simple Features
 
+ * **Decoupled with production code** This json replay server will run only side by side in local development/testing environment on demand, **Zero** code change required in your production code.
  * **Simple command** to launch it with optional port and folder configuration.
  * **Supre Easy to create & maintain data** Create a pure json file in your replay data folder and you should get it right away, no programming is required.
  * **Advanced features** to allow you set more matching rules including query parameters, method, header, cookie etc. 
