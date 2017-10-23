@@ -180,10 +180,10 @@ You can read more about what options are available here **webpack-dev-server** p
 and then we edit the package.json file's start script to be
 
 ```
-"start": "ng serve --proxy-config proxy.conf.json",
+"startWithMock": "ng serve --proxy-config proxy.conf.json",
 ```
 
-now run it with **npm start**
+now run it with **npm startWithMock**
 
 #### ► Directly Use Webpack
 
