@@ -9,8 +9,8 @@ function startWatching(folder) {
         ignored: /[\/\\]\./, persistent: true
     });
 
-    //Only reload the files until user stops changing files after 800 milliseconds, to avoid repeat loading when saving/copying multiple files.
-    var changedFiles = Rx.Observable.fromEvent(dirWatcher, 'change').debounce(function (x) { return Rx.Observable.timer(800); });
+    //Only reload the files until user stops changing files after 1500 milliseconds, to avoid repeat loading when saving/copying multiple files.
+    var changedFiles = Rx.Observable.fromEvent(dirWatcher, 'change').debounce(function (x) { return Rx.Observable.timer(1500); });
 
     var subscription = changedFiles.subscribe(
         function (filename) {

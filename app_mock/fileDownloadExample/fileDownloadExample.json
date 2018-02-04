@@ -1,0 +1,13 @@
+{
+    "comment" : "'path' is a relative path to current mock json file with the file name, 'downloadFileName' is the filename that will appear as attachment",
+    "request" : {
+        "path": "testDownload"
+    },
+    "response" : {
+        "status" : 200,
+        "file" : {
+            "path" : "sample.pdf",
+            "downloadFilename" : "test.pdf"
+        }
+    }
+}

@@ -37,6 +37,7 @@ function loadRequestMappings(folder) {
         _.each(files, function (filePath) {
             util.print(filePath);
             var mockDataConfig = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            mockDataConfig.filePath = filePath;
             buildMappings(mockDataConfig);
         });
 

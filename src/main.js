@@ -1,5 +1,6 @@
 var express = require('express');
 var _ = require('underscore');
+var path = require('path');
 
 var util = require("./util");
 var optionParser = require("./optionParser");
@@ -74,11 +75,22 @@ function response(res, mockDataConfig) {
             .status(mockDataConfig.response.status)
             .send(mockDataConfig.response.html);
     } else if (mockDataConfig.response.file) {
+        const config = mockDataConfig.response.file;
 
+        const filePath = path.dirname(mockDataConfig.filePath) + path.sep + config.path;
+        const downloadFilename = config.downloadFilename || path.basename(config.path);
+        res.download(filePath, downloadFilename , function(err) {
+            if(err) {
+                res.header("Content-Type", "application/json").status(404).json(
+                    {
+                        error: 'Can not find any download file - [' + filePath + '], please check your mock data configuration file - [' + mockDataConfig.filePath + '], your download file path should be relative to your mock configuration file.'
+                    });
+            }
+        });
     } else {
         res.header("Content-Type", "application/json").status(404).json(
             {
-                warning: 'You forget to configure the response type, please refer document - https://github.com/realdah/simple-json-replay-server'
+                warning: 'You forget to configure the response type in ' + mockDataConfig.filePath + ', please refer document - https://github.com/realdah/simple-json-replay-server.'
             });
     }
 }
