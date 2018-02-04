@@ -87,9 +87,13 @@ example-data2.json
 
 So, you could imagine that you can config json data with multiple level of filtering conditions. thus, you could possible to define a default mock response for a use case, then define more strict rules to return another mock data based on parameter/body/header changes. 
 
-** Sample Use Cases**
+**Some Sample Use Cases**
 
 https://github.com/realdah/simple-json-replay-server/wiki/Some-use-case-scenarios-for-demonstrating-how-to-use-this-tool
+
+**Some More  Mock Configurations Examples**
+
+https://github.com/realdah/simple-json-replay-server/tree/master/app_mock
 
 ### ✦ **Start the replay server**  
  
