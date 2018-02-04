@@ -19,10 +19,6 @@ Or, if you have legacy backend API design, which are not strictly following rest
  * **Straight-foward rules** configured in the file, they are almost self explaining.
  * **Fast & Predictable**, Once configured, it will response immediately and consistently.
  * **Simple but still Powerful**, You can configure different rules to simulating different responses to cover different scenarios for the same service call, such as paginiation, error, failure etc.
-
-## Sampe Use Cases
-
-https://github.com/realdah/simple-json-replay-server/wiki/Some-use-case-scenarios-for-demonstrating-how-to-use-this-tool
   
 ## Node Dependency
 Support **node version >= 4.0.0** by not using any **ES6** syntax for a period of time.
@@ -47,36 +43,53 @@ mkdir app_mock
 
 ### ✦ **Create mock data config files**    
 
-Create a json file, eg. **_example.json_** inside of **_app_mock_** folder, you can create **any layer of sub folders to organize your mock data files**. The mock server will only look for files ending with ".json" in app_mock folder recursively.
-
-Once start replay server, you can hit <http://localhost:8008/test?param1=value1%20to%20be%20matched&param2=value2%20to%20be%20matched> to see the result.
-
+Create below json files, put them inside of **_app_mock_** folder, you can create **any layer of sub folders to organize your mock data files**. The mock server will only look for files ending with ".json" in app_mock folder recursively.
 
 > Please note: you are able to config a different port number if it conflicts.
 
 
 ```
-example.json
+example-data1.json
 
 {
     "comment" : "You are free to add comment for this json mock response, comment filed is optional",
     "request" : {
         "path": "test",
+        "method" : "get"
+    },
+    "response" : {
+        "status" : 200,
+        "data" : {
+            "message" : "You get this message when you hit http://localhost:8008/test or http://localhost:8008/test?anyParameter=anyValue&anyParameter2=anyValue2 as long as you don't include 'param1=value1'"
+        }
+    }
+}
+
+example-data2.json
+
+{
+    "comment" : "",
+    "request" : {
+        "path": "test",
         "method" : "get",
         "query" : {
-            "param1" : "value1 to be matched",
-            "param2" : "value2 to be matched"
+            "param1" : "value1"
         }
     },
     "response" : {
         "status" : 200,
         "data" : {
-            "message" : "you made it!"
+            "message" : "You get this message when you hit http://localhost:8008/test&param1=value1 or with additional parameters as long as you have 'param1=value1'"
         }
     }
 }
 ```  
 
+So, you could imagine that you can config json data with multiple level of filtering conditions. thus, you could possible to define a default mock response for a use case, then define more strict rules to return another mock data based on parameter/body/header changes. 
+
+** Sample Use Cases**
+
+https://github.com/realdah/simple-json-replay-server/wiki/Some-use-case-scenarios-for-demonstrating-how-to-use-this-tool
 
 ### ✦ **Start the replay server**  
  
