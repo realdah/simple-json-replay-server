@@ -59,6 +59,7 @@ Once start replay server, you can hit <http://localhost:8008/test?param1=value1%
 example.json
 
 {
+    "comment" : "You are free to add comment for this json mock response, comment filed is optional",
     "request" : {
         "path": "test",
         "method" : "get",

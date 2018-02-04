@@ -1,15 +1,11 @@
 {
     "request" : {
-        "path": "test",
-        "method" : "get",
-        "query" : {
-            "aa" : "123"
-        }
+        "path": "test"
     },
     "response" : {
         "status" : 200,
         "data" : {
-            "key" : "aa : 123"
+            "message" : "you get default result. let's try http://localhost:8008/test?aa=123 or http://localhost:8008/test?bb=123 to see what's happen"
         }
     }
 }

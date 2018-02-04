@@ -29,8 +29,8 @@ app.all('*', function (req, res) {
     if (mockDataConfig) {
         var delay = mockDataConfig.response.delay || options.delay;
 
-        if(delay != 0) {
-            setTimeout(function() {
+        if (delay != 0) {
+            setTimeout(function () {
                 response(res, mockDataConfig);
             }, delay);
         } else {
@@ -65,14 +65,21 @@ function initialBodyParsers(app) {
 
 function response(res, mockDataConfig) {
 
-    if(mockDataConfig.response.data) { //json data
+    if (mockDataConfig.response.data) { //json data
         res.header("Content-Type", "application/json")
-                    .status(mockDataConfig.response.status)
-                    .json(mockDataConfig.response.data);
-    } else {  //assume it is html data
+            .status(mockDataConfig.response.status)
+            .json(mockDataConfig.response.data);
+    } else if (mockDataConfig.response.html) {
         res.header("Content-Type", "text/html")
-                    .status(mockDataConfig.response.status)
-                    .send(mockDataConfig.response.html);
+            .status(mockDataConfig.response.status)
+            .send(mockDataConfig.response.html);
+    } else if (mockDataConfig.response.file) {
+
+    } else {
+        res.header("Content-Type", "application/json").status(404).json(
+            {
+                warning: 'You forget to configure the response type, please refer document - https://github.com/realdah/simple-json-replay-server'
+            });
     }
 }
 

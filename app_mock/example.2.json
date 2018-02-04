@@ -1,11 +1,17 @@
 {
+    "comment" : "this example, you can only get the result if you at least have query as 'aa=123', you can have more query paramters of couse",
     "request" : {
-        "path": "test"
+        "path": "test",
+        "method" : "get",
+        "query" : {
+            "aa" : "123"
+        }
     },
     "response" : {
         "status" : 200,
         "data" : {
-            "message" : "you got it! aaaa"
+            "message" : "you can see this because you used query parameter 'aa=123' in your url",
+            "key" : "aa : 123"
         }
     }
 }
