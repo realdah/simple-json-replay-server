@@ -9,6 +9,11 @@ function print(message, option) {
     }
 }
 
+function warning(message) {
+    message = '\x1b[33m' + message + '\x1b[0m';
+    print(message);
+}
+
 function printVersion() {
     var pjson = require('../package.json');
     console.log("version: " + pjson.version);
@@ -50,3 +55,4 @@ function partialContains(fullObject, partialObject) {
 exports.partialContains = partialContains;
 exports.printVersion = printVersion;
 exports.print = print;
+exports.warning = warning;

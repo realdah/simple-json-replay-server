@@ -34,14 +34,22 @@ function loadRequestMappings(folder) {
     //build up the mapping trees
     glob(folder + "/**/*.json", null, function (er, files) {
 
+        var successLoaded = _.size(files);
+
         _.each(files, function (filePath) {
-            util.print(filePath);
-            var mockDataConfig = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-            mockDataConfig.filePath = filePath;
-            buildMappings(mockDataConfig);
+            
+            try {
+                var mockDataConfig = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+                mockDataConfig.filePath = filePath;
+                buildMappings(mockDataConfig);
+            } catch(e) {
+                successLoaded--;
+                util.warning(filePath + ' - failed: ' + e.message);
+            }
+            util.print(filePath + ' - loaded');
         });
 
-        util.print(_.size(files) + " json mock data files are found and loaded successfully.");
+        util.print(successLoaded + " json mock data files are found and loaded successfully.");
     });
 
     return requestMappings;

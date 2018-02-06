@@ -1,10 +1,10 @@
 {
     "request" : {
         "path": "html",
-        "method": "get"
+        "method": "get"'
     },
     "response" : {
         "status" : 200,
-        "html" : "<html><body><h1>Hello world.</h1><p>You can see this message is in html format instead of json format</p></body></html>"
+        "html": "<html><body><h1>Hello world.</h1><p>You can see this message is in html format instead of json format</p></body></html>"
     }
 }
