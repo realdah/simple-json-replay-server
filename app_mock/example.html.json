@@ -1,7 +1,7 @@
 {
     "request" : {
         "path": "html",
-        "method": "get"'
+        "method": "get"
     },
     "response" : {
         "status" : 200,

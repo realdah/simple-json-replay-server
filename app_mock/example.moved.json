@@ -1,0 +1,10 @@
+{
+    "request" : {
+        "path": "moved",
+        "method": "get"
+    },
+    "response" : {
+        "status" : 302,
+        "location": "http://www.google.com"
+    }
+}

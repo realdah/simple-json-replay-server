@@ -150,6 +150,7 @@ Key | Value | Optional | Description
  data | a json object map | Yes | you can define the expected json response.
  html | a string  | Yes | When you define **html** as response, please note that you should not define **data**, if both **data** & **html** are defined, it will consider only **data**.
 file | a json object map | Yes | it support two keys, **filePath** the file that you want user to download, it should be a relative path to config file including original file name,  **downloadFilename** is the file name that you want browser to use when download. please refer to https://github.com/realdah/simple-json-replay-server/wiki/How-to-mock-a-file-download for details.
+location | a relative path or an absolute url | yes | Used to mock 302 forwarding behavior, when you set location, your status code has to be set as 302, and this key can not be used with data/html/file.
 
 
 ## Integrate with your development work flow
@@ -272,6 +273,7 @@ Version | Description
  0.0.11 | support filtering by **headers** value.
  0.0.12 | support new response type as **html**
  0.1.0 | support file download, new response type as **file**
+ 0.1.2 | support 302 forwarding with a location (relative path or absolute path)
  
  
 ---

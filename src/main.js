@@ -79,14 +79,18 @@ function response(res, mockDataConfig) {
 
         const filePath = path.dirname(mockDataConfig.filePath) + path.sep + config.path;
         const downloadFilename = config.downloadFilename || path.basename(config.path);
-        res.download(filePath, downloadFilename , function(err) {
-            if(err) {
+        res.download(filePath, downloadFilename, function (err) {
+            if (err) {
                 res.header("Content-Type", "application/json").status(404).json(
                     {
                         error: 'Can not find any download file - [' + filePath + '], please check your mock data configuration file - [' + mockDataConfig.filePath + '], your download file path should be relative to your mock configuration file.'
                     });
             }
         });
+    } else if (mockDataConfig.response.status === 302 && mockDataConfig.response.location) {
+        res.header("location", mockDataConfig.response.location)
+            .status(mockDataConfig.response.status)
+            .send();
     } else {
         res.header("Content-Type", "application/json").status(404).json(
             {
