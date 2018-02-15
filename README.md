@@ -187,7 +187,7 @@ We create a file next to projects package.json called proxy.conf.json with the c
 
 ```
 {
-  "/api/*": { //Note, this wild match is the key to make it work (Jeff)
+  "/api/**": {
     "target": "http://localhost:8008",
     "secure": false
   }
