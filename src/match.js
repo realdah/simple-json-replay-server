@@ -1,11 +1,10 @@
 var _ = require('underscore');
 var util = require('./util');
 
-var NOT_MATCH = -999999;
-
 function matchRequests(request, requestMappings) {
     var path = request.path.toLowerCase();
     var query = request.query;
+    var cookies = request.cookies;
     var body = request.body;
     var headers = request.headers;
     var method = request.method;
@@ -43,7 +42,13 @@ function matchRequests(request, requestMappings) {
 
             var headerScore = util.partialContains(headers, mockDataConfig.request.headers);
 
-            var score = queryScore + bodyScore + headerScore;
+            if(headerScore < 0) {
+                return;
+            }
+
+            var cookieScore = util.partialContains(cookies, mockDataConfig.request.cookies);
+
+            var score = queryScore + bodyScore + headerScore + cookieScore;
 
             if(score >= bestScore) {
                 bestScore = score;

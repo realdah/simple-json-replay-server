@@ -138,6 +138,7 @@ Key | Value | Optional | Description
  query | key value pairs | Yes | Default as **undefined** (no filtering). You can think about this is a filtering logic.  As long as you defined one or more key-value pairs, it will only return results which exactly matching these query parameters to pass through. If multiple results all matching, it will choose the first one.
  body | a json map | Yes | Default as **undefined**. you can have partial values in multiple layers, it will only try to match partial branch of the value till the end. So far, only support **json body** (application/json) & **form-urlencoded** (application/x-www-form-urlencoded) when **post**.
  headers | key value pairs | Yes | default as undefined. Similiar to **query**, if you add any thing in here, it will filter out the data with headers having specific value.  
+ cookies | key value pairs | Yes | default as undefined. Similiar to **headers**, if you add any thing in here, it will filter out the data with cookies having specific value. **(Do not support secured cookies for now)**
 
 ### ✦ Response
 
@@ -274,7 +275,7 @@ Version | Description
  0.0.12 | support new response type as **html**
  0.1.0 | support file download, new response type as **file**
  0.1.2 | support 302 forwarding with a location (relative path or absolute path)
- 
+ 0.1.3 | support support cookie matching
  
 ---
 

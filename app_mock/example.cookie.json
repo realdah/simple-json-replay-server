@@ -1,0 +1,14 @@
+{
+    "request" : {
+        "path": "test",
+        "cookies" : {
+            "username" : "abc"
+        }
+    },
+    "response" : {
+        "status" : 200,
+        "data": {
+            "message" : "you can see this message only when you access with a cookie 'username' as 'abc'"
+        }
+    }
+}

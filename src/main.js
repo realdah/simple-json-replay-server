@@ -8,7 +8,11 @@ var mockDataLoader = require("./mockDataLoader");
 var match = require("./match");
 var watcher = require('./watcher');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
+
+
 var app = express();
+app.use(cookieParser())
 
 //beautify the JSON output from mock server, this will give a lot of convenient during development. 
 //it is not a production environment, performance impact is negligible.
