@@ -1,0 +1,11 @@
+{
+    "request" : {
+        "path": "testTest"
+    },
+    "response" : {
+        "status" : 200,
+        "data" : {
+            "message" : "you can see this because you used the path 'testTest'"
+        }
+    }
+}
