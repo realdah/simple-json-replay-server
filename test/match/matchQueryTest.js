@@ -38,11 +38,25 @@ describe('match', function() {
             "response" : {}
         };
 
+        var configQuery4 = {
+            "request" : {
+                "path": "defaultQueryTest"
+            },
+            "response" : {}
+        };
+
+        var configQuery5 = {
+            "request" : {
+                "path": "defaultQuery"
+            },
+            "response" : {}
+        };
+
         var requestMappings;
 
         beforeEach(function(){
             mockDataLoader.reset();
-            _.each([configQuery1, configQuery2, configQuery3], function(config){
+            _.each([configQuery1, configQuery2, configQuery3, configQuery4, configQuery5], function(config){
                 mockDataLoader.buildMappings(config);
             })
             requestMappings = mockDataLoader.getRequestMappings();
@@ -112,6 +126,20 @@ describe('match', function() {
             assert.notDeepEqual(match.matchRequests(request1, requestMappings), configQuery1);
             assert.notDeepEqual(match.matchRequests(request, requestMappings), configQuery2);
             assert.notDeepEqual(match.matchRequests(request1, requestMappings), configQuery2);
+        });
+
+        it('matchRequests should match exact path if it exists', function() {
+            var request4 = {
+                "path" : "/defaultQueryTest",
+                "method" : "GET"
+            };
+
+            var request5 = {
+                "path" : "/defaultQuery",
+                "method" : "GET"
+            };
+            assert.deepEqual(match.matchRequests(request4, requestMappings), configQuery4);
+            assert.deepEqual(match.matchRequests(request5, requestMappings), configQuery5);
         });
     });
 });

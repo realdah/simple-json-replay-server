@@ -27,6 +27,11 @@ function matchRequests(request, requestMappings) {
         });
 
         _.each(listOfMockDataConfigures, function(mockDataConfig){
+            var trimmedMockRequestPath = mockDataConfig.request.path.toLowerCase().replace(/^\/+/g, '');
+            var trimmedPath = path.toLowerCase().replace(/^\/+/g, '');       
+
+            // Exact path scores 10
+            var pathScore = trimmedMockRequestPath === trimmedPath ? 10 : 0;
 
             var queryScore = util.partialContains(query, mockDataConfig.request.query);
 
@@ -48,7 +53,7 @@ function matchRequests(request, requestMappings) {
 
             var cookieScore = util.partialContains(cookies, mockDataConfig.request.cookies);
 
-            var score = queryScore + bodyScore + headerScore + cookieScore;
+            var score = pathScore + queryScore + bodyScore + headerScore + cookieScore;
 
             if(score >= bestScore) {
                 bestScore = score;
