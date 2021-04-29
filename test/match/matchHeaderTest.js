@@ -1,13 +1,13 @@
-var assert = require('assert');
-var _ = require('underscore');
-var match = require('../../src/match');
-var mockDataLoader = require('../../src/mockDataLoader');
+const assert = require('assert');
+const _ = require('underscore');
+const match = require('../../src/match');
+const mockDataLoader = require('../../src/mockDataLoader');
 
 describe('match', function() {
 
     describe('matching header', function() {
 
-        var config1 = {
+        const config1 = {
             "request" : {
                 "path": "test",
                 "headers" : {
@@ -17,7 +17,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var config2 = {
+        const config2 = {
             "request" : {
                 "path": "test",
                 "headers" : {
@@ -28,7 +28,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var config3 = {
+        const config3 = {
             "request" : {
                 "path": "test",
                 "headers" : {
@@ -38,7 +38,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var requestMappings;
+        let requestMappings;
 
         beforeEach(function(){
             mockDataLoader.reset();
@@ -49,7 +49,7 @@ describe('match', function() {
         });
 
         it('matchRequests should match header', function() {
-            var request = {
+            const request = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "headers" : {
@@ -58,7 +58,7 @@ describe('match', function() {
                 }
             };
 
-            var request1 = {
+            const request1 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "headers" : {
@@ -67,7 +67,7 @@ describe('match', function() {
                 }
             };
 
-            var request2 = {
+            const request2 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "headers" : {
@@ -77,7 +77,7 @@ describe('match', function() {
                 }
             };
 
-            var request3 = {
+            const request3 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "headers" : {
@@ -92,7 +92,7 @@ describe('match', function() {
         });
 
         it('matchRequests should not match query if any param not match', function() {
-            var request = {
+            const request = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "headers" : {
@@ -101,7 +101,7 @@ describe('match', function() {
                 }
             };
 
-            var request1 = {
+            const request1 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "headers" : {

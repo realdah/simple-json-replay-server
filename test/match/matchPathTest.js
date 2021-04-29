@@ -1,18 +1,18 @@
-var assert = require('assert');
-var _ = require('underscore');
-var match = require('../../src/match');
-var mockDataLoader = require('../../src/mockDataLoader');
+const assert = require('assert');
+const _ = require('underscore');
+const match = require('../../src/match');
+const mockDataLoader = require('../../src/mockDataLoader');
 
 describe('match', function() {
     describe('matching path', function() {
-        var configPathGet = {
+        const configPathGet = {
             "request" : {
                 "path": "test"
             },
             "response" : {}
         };
 
-        var configSamePathPost = {
+        const configSamePathPost = {
             "request" : {
                 "path": "duplicate_path",
                 "method" : "post"
@@ -20,7 +20,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var configSamePathGet = {
+        const configSamePathGet = {
             "request" : {
                 "path": "duplicate_path",
                 "method" : "get"
@@ -28,7 +28,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var requestMappings;
+        let requestMappings;
 
         beforeEach(function(){
             mockDataLoader.reset();
@@ -39,7 +39,7 @@ describe('match', function() {
         });
 
         it('matchRequests should match path with GET method', function() {
-            var request = {
+            const request = {
                 "path" : "/test",
                 "method" : "GET"
             };
@@ -47,7 +47,7 @@ describe('match', function() {
         });
 
         it('matchRequests should match partial path', function() {
-            var request = {
+            const request = {
                 "path" : "/test123",
                 "method" : "GET"
             };
@@ -55,7 +55,7 @@ describe('match', function() {
         });
 
         it('matchRequests should match same path with POST method', function() {
-            var request = {
+            const request = {
                 "path" : "/duplicate_path",
                 "method" : "POST"
             };
@@ -63,7 +63,7 @@ describe('match', function() {
         });
 
         it('matchRequests should match same path with GET method', function() {
-            var request = {
+            const request = {
                 "path" : "/duplicate_path",
                 "method" : "GET"
             };

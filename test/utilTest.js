@@ -1,5 +1,5 @@
-var assert = require('assert');
-var util = require('../src/util');
+const assert = require('assert');
+const util = require('../src/util');
 
 
 describe('util', function () {
@@ -30,7 +30,7 @@ describe('util', function () {
         });
 
         it('partialContains should check if full object contains partial object for first layer', function () {
-            var fullObject = {
+            const fullObject = {
                 "param1": "value1",
                 "param2": "value2"
             }
@@ -43,7 +43,7 @@ describe('util', function () {
         });
 
         it('partialContains should check if full object contains partial object recursively', function () {
-            var fullObject = {
+            const fullObject = {
                 "param1": {
                     "subParam1": "subValue1",
                     "subParam2": "subValue2",

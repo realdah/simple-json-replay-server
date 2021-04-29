@@ -1,13 +1,13 @@
-var assert = require('assert');
-var _ = require('underscore');
-var match = require('../../src/match');
-var mockDataLoader = require('../../src/mockDataLoader');
+const assert = require('assert');
+const _ = require('underscore');
+const match = require('../../src/match');
+const mockDataLoader = require('../../src/mockDataLoader');
 
 describe('match', function() {
 
     describe('matching json body when post', function() {
 
-        var configQuery1 = {
+        const configQuery1 = {
             "request" : {
                 "path": "test",
                 "method" : "post",
@@ -18,7 +18,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var configQuery2 = {
+        const configQuery2 = {
             "request" : {
                 "path": "test",
                 "method" : "post",
@@ -34,7 +34,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var configQuery3 = {
+        const configQuery3 = {
             "request" : {
                 "path": "testQuery",
                 "method" : "post",
@@ -49,7 +49,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var requestMappings;
+        let requestMappings;
 
         beforeEach(function(){
             mockDataLoader.reset();
@@ -60,7 +60,7 @@ describe('match', function() {
         });
 
         it('matchRequests should match body', function() {
-            var request = {
+            const request = {
                "path": "testQuery",
                 "method" : "POST",
                 "body" : {
@@ -68,7 +68,7 @@ describe('match', function() {
                     "param2" : "value2"
                 } 
             };
-            var request1 = {
+            const request1 = {
                 "path": "testQuery",
                 "method" : "POST",
                 "body" : {
@@ -83,7 +83,7 @@ describe('match', function() {
                 }
             };
 
-            var request2 = {
+            const request2 = {
                 "path": "testQuery",
                 "method" : "POST",
                 "body" : {
@@ -102,7 +102,7 @@ describe('match', function() {
         });
 
         it('matchRequests should not match body', function() {
-            var request = {
+            const request = {
                "path": "testQuery",
                 "method" : "post",
                 "body" : {

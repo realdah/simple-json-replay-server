@@ -1,13 +1,13 @@
-var assert = require('assert');
-var _ = require('underscore');
-var match = require('../../src/match');
-var mockDataLoader = require('../../src/mockDataLoader');
+const assert = require('assert');
+const _ = require('underscore');
+const match = require('../../src/match');
+const mockDataLoader = require('../../src/mockDataLoader');
 
 describe('match', function() {
 
     describe('matching query', function() {
 
-        var configQuery1 = {
+        const configQuery1 = {
             "request" : {
                 "path": "testQuery",
                 "query" : {
@@ -17,7 +17,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var configQuery2 = {
+        const configQuery2 = {
             "request" : {
                 "path": "testQuery",
                 "query" : {
@@ -28,7 +28,7 @@ describe('match', function() {
             "response" : {}
         };
 
-        var configQuery3 = {
+        const configQuery3 = {
             "request" : {
                 "path": "testQuery",
                 "query" : {
@@ -38,21 +38,21 @@ describe('match', function() {
             "response" : {}
         };
 
-        var configQuery4 = {
+        const configQuery4 = {
             "request" : {
                 "path": "defaultQueryTest"
             },
             "response" : {}
         };
 
-        var configQuery5 = {
+        const configQuery5 = {
             "request" : {
                 "path": "defaultQuery"
             },
             "response" : {}
         };
 
-        var requestMappings;
+        let requestMappings;
 
         beforeEach(function(){
             mockDataLoader.reset();
@@ -63,7 +63,7 @@ describe('match', function() {
         });
 
         it('matchRequests should match query', function() {
-            var request = {
+            const request = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
@@ -72,7 +72,7 @@ describe('match', function() {
                 }
             };
 
-            var request1 = {
+            const request1 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
@@ -81,7 +81,7 @@ describe('match', function() {
                 }
             };
 
-            var request2 = {
+            const request2 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
@@ -91,7 +91,7 @@ describe('match', function() {
                 }
             };
 
-            var request3 = {
+            const request3 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
@@ -106,7 +106,7 @@ describe('match', function() {
         });
 
         it('matchRequests should not match query if any param not match', function() {
-            var request = {
+            const request = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
@@ -114,7 +114,7 @@ describe('match', function() {
                 }
             };
 
-            var request1 = {
+            const request1 = {
                 "path" : "/testQuery",
                 "method" : "GET",
                 "query" : {
@@ -129,12 +129,12 @@ describe('match', function() {
         });
 
         it('matchRequests should match exact path if it exists', function() {
-            var request4 = {
+            const request4 = {
                 "path" : "/defaultQueryTest",
                 "method" : "GET"
             };
 
-            var request5 = {
+            const request5 = {
                 "path" : "/defaultQuery",
                 "method" : "GET"
             };
