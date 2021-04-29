@@ -1,17 +1,16 @@
-var express = require('express');
-var _ = require('underscore');
-var path = require('path');
+const express = require('express');
+const _ = require('underscore');
+const path = require('path');
 
-var util = require("./util");
-var optionParser = require("./optionParser");
-var mockDataLoader = require("./mockDataLoader");
-var match = require("./match");
-var watcher = require('./watcher');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser')
+const util = require("./util");
+const optionParser = require("./optionParser");
+const mockDataLoader = require("./mockDataLoader");
+const match = require("./match");
+const watcher = require('./watcher');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 
-
-var app = express();
+const app = express();
 app.use(cookieParser())
 
 //beautify the JSON output from mock server, this will give a lot of convenient during development. 
@@ -20,19 +19,19 @@ app.set('json spaces', 4);
 
 initialBodyParsers(app);
 
-var options = optionParser.parseArguments();
+const options = optionParser.parseArguments();
 
 util.printVersion();
 
 mockDataLoader.loadRequestMappings(options.folder);
 
 app.all('*', function (req, res) {
-    var requestMappings = mockDataLoader.getRequestMappings();
+    const requestMappings = mockDataLoader.getRequestMappings();
 
-    var mockDataConfig = match.matchRequests(req, requestMappings);
+    const mockDataConfig = match.matchRequests(req, requestMappings);
 
     if (mockDataConfig) {
-        var delay = mockDataConfig.response.delay || options.delay;
+        const delay = mockDataConfig.response.delay || options.delay;
 
         if (delay != 0) {
             setTimeout(function () {
@@ -51,7 +50,7 @@ app.all('*', function (req, res) {
     }
 });
 
-var server = app.listen(options.port, function () {
+const server = app.listen(options.port, function () {
     util.print('Server is listening to port: %s', server.address().port);
     util.print('Json data folder: %s\n', options.folder);
 });
