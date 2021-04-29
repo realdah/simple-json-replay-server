@@ -1,1 +1,6 @@
 node_modules/
+/.idea/.gitignore
+/.idea/modules.xml
+/package-lock.json
+/.idea/simple-json-replay-server.iml
+/.idea/vcs.xml
