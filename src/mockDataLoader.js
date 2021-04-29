@@ -1,11 +1,11 @@
-var glob = require("glob"); //load many files and filtering with some rules at one shot
-var fs = require('fs');
-var _ = require('underscore');
+const glob = require("glob"); //load many files and filtering with some rules at one shot
+const fs = require('fs');
+const _ = require('underscore');
 
-var util = require("./util");
+const util = require("./util");
 
 //requestMappings should be a map with path as a key
-var requestMappings = {};
+let requestMappings = {};
 
 function buildMappings( mockDataConfig ){
 
@@ -18,7 +18,7 @@ function buildMappings( mockDataConfig ){
         return false;
     }
 
-    var path = mockDataConfig.request.path.toLowerCase();
+    const path = mockDataConfig.request.path.toLowerCase();
 
     setDefaults(mockDataConfig);
 
@@ -34,12 +34,12 @@ function loadRequestMappings(folder) {
     //build up the mapping trees
     glob(folder + "/**/*.json", null, function (er, files) {
 
-        var successLoaded = _.size(files);
+        const successLoaded = _.size(files);
 
         _.each(files, function (filePath) {
             
             try {
-                var mockDataConfig = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+                const mockDataConfig = JSON.parse(fs.readFileSync(filePath, 'utf8'));
                 mockDataConfig.filePath = filePath;
                 buildMappings(mockDataConfig);
             } catch(e) {

@@ -1,6 +1,6 @@
 {
   "name": "simple-json-replay-server",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A simple json replay server which can be used for standalone frontend web application (angular especially) when development.  Simply put the url & parameters & response json data, then hit the url in browser or from your web application, whenever it matches the url and parameters, it will return the best match json data.",
   "main": "main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "mocha --recursive"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=10.0.0"
   },
   "repository": {
     "type": "git",
@@ -19,18 +19,15 @@
   },
   "homepage": "https://github.com/realdah/simple-json-replay-server",
   "keywords": [
+    "react",
     "angular",
-    "angular2",
-    "angular-cli",
     "react",
     "redux",
     "mock",
     "simple",
     "json",
     "testing",
-    "development",
-    "replay",
-    "server"
+    "development"
   ],
   "author": {
     "name": "Anhua Duan",

@@ -1,4 +1,4 @@
-var _ = require('underscore');
+const _ = require('underscore');
 
 function print(message, option) {
     process.stdout.write("[SJRS] ");
@@ -15,7 +15,7 @@ function warning(message) {
 }
 
 function printVersion() {
-    var pjson = require('../package.json');
+    const pjson = require('../package.json');
     console.log("version: " + pjson.version);
 }
 
@@ -29,20 +29,20 @@ function partialContains(fullObject, partialObject) {
         return -1;
     }
 
-    var match = 0;
+    let match = 0;
 
     //use _.find because we want to break from the loop if anything not match.
     //_.each will not be able to break completely.
     _.find(_.keys(partialObject), function(key) {
-        var value = partialObject[key];
-        var fullObjectValue = fullObject[key];
+        const value = partialObject[key];
+        const fullObjectValue = fullObject[key];
 
         if((typeof value === "object") && (typeof fullObjectValue === "object")) {
             match = partialContains(fullObjectValue, value);
             if(match < 0) {
                 return true;
             }
-        } else if(fullObjectValue != value) {
+        } else if(fullObjectValue !== value) {
             match = -1;
             return true;
         }

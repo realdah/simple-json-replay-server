@@ -1,16 +1,18 @@
-var _ = require('underscore');
+const _ = require('underscore');
 
-var optionsConfig = {
-    "port" : {
+const MOCK_DATA_FOLDER = "app_mock";
+
+const optionsConfig = {
+    port: {
         "default" : 8008,
         "desc" : "port number used by mock replay server",
         "type" : "number"
     },
-     "folder" : {
-        "default" : "app_mock",
+     folder: {
+        "default" : MOCK_DATA_FOLDER,
         "desc" : "mock data folder, you can give relative or absolute path"
      },
-     "delay" : {
+     delay: {
          "default" : 0,
          "desc" : "global settings for delay a response in milliseconds, 0 means no delay, negative value means timeout",
          "type" : "number"
@@ -18,8 +20,7 @@ var optionsConfig = {
 };
 
 function parseArguments() {
-    var MOCK_DATA_FOLDER = "app_mock";
-    var args = process.argv.slice(2);
+    const args = process.argv.slice(2);
     
     if (args.length === 0) {
         console.log("You can use below options to start the server:  (eg. --port=8990 )");
@@ -30,17 +31,17 @@ function parseArguments() {
     }
 
     //default options
-    var options = {};
+    const options = {};
     _.each(optionsConfig, function(value, key){
         return options[key] = value["default"];
     });
 
     _.each(args, function(arg) {
         _.each(optionsConfig, function(option, key){
-            var optionName = ('--' + key + '=');
+            const optionName = ('--' + key + '=');
             if(arg.startsWith(optionName)) {
-                if(option.type == "number") {
-                    var value = Number(arg.replace(optionName, ""));
+                if(option.type === "number") {
+                    const value = Number(arg.replace(optionName, ""));
                     if(!isNaN(value)) {
                         options[key] = value;
                     } else {
