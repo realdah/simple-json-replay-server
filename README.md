@@ -276,7 +276,7 @@ Version | Description
  0.1.0 | support file download, new response type as **file**
  0.1.2 | support 302 forwarding with a location (relative path or absolute path)
  0.1.3 | support support cookie matching
- 0.2.1 | update dependencies to resolve security issues
+ 0.2.2 | update dependencies to resolve security issues
 ---
 
 ## License
