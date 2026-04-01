@@ -26,7 +26,7 @@ util.printVersion();
 
 mockDataLoader.loadRequestMappings(options.folder);
 
-app.all('*', function (req, res) {
+app.all(/.*/, function (req, res) {
     var requestMappings = mockDataLoader.getRequestMappings();
 
     var mockDataConfig = match.matchRequests(req, requestMappings);
@@ -51,20 +51,12 @@ app.all('*', function (req, res) {
     }
 });
 
-var server = app.listen(options.port, function () {
-    util.print('Server is listening to port: %s', server.address().port);
-    util.print('Json data folder: %s\n', options.folder);
-});
-
-//start watching the changes.
-watcher.startWatching(options.folder);
-
 //it says there might be potential cross site scripting attack if we declare global body parsers for all requests.
 //However, since the mock server is really nothing but a replay with hardcoded data, this is not a concern for us.
 function initialBodyParsers(app) {
     // parse application/json
     app.use(bodyParser.json());
-    // parse application/x-www-form-urlencoded
+    // parse application/x-wwwform-urlencoded
     app.use(bodyParser.urlencoded({ extended: false }));
 }
 
@@ -79,10 +71,10 @@ function response(res, mockDataConfig) {
             .status(mockDataConfig.response.status)
             .send(mockDataConfig.response.html);
     } else if (mockDataConfig.response.file) {
-        const config = mockDataConfig.response.file;
+        var config = mockDataConfig.response.file;
 
-        const filePath = path.dirname(mockDataConfig.filePath) + path.sep + config.path;
-        const downloadFilename = config.downloadFilename || path.basename(config.path);
+        var filePath = path.dirname(mockDataConfig.filePath) + path.sep + config.path;
+        var downloadFilename = config.downloadFilename || path.basename(config.path);
         res.download(filePath, downloadFilename, function (err) {
             if (err) {
                 res.header("Content-Type", "application/json").status(404).json(
@@ -103,3 +95,20 @@ function response(res, mockDataConfig) {
     }
 }
 
+function startServer(callback) {
+    var server = app.listen(options.port, function () {
+        util.print('Server is listening to port: %s', server.address().port);
+        util.print('Json data folder: %s\n', options.folder);
+        if (callback) callback(server);
+    });
+    //start watching the changes.
+    watcher.startWatching(options.folder);
+    return server;
+}
+
+// Only start server if this file is run directly (not required as module)
+if (require.main === module) {
+    var server = startServer();
+}
+
+module.exports = { app, startServer, options };

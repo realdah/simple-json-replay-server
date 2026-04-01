@@ -1,4 +1,4 @@
-var glob = require("glob"); //load many files and filtering with some rules at one shot
+var glob = require("glob").sync; //load many files and filtering with some rules at one shot
 var fs = require('fs');
 var _ = require('underscore');
 
@@ -32,25 +32,24 @@ function buildMappings( mockDataConfig ){
 
 function loadRequestMappings(folder) {
     //build up the mapping trees
-    glob(folder + "/**/*.json", null, function (er, files) {
+    var files = glob(folder + "/**/*.json", { absolute: true });
 
-        var successLoaded = _.size(files);
+    var successLoaded = _.size(files);
 
-        _.each(files, function (filePath) {
-            
-            try {
-                var mockDataConfig = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-                mockDataConfig.filePath = filePath;
-                buildMappings(mockDataConfig);
-            } catch(e) {
-                successLoaded--;
-                util.warning(filePath + ' - failed: ' + e.message);
-            }
-            util.print(filePath + ' - loaded');
-        });
-
-        util.print(successLoaded + " json mock data files are found and loaded successfully.");
+    _.each(files, function (filePath) {
+        
+        try {
+            var mockDataConfig = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            mockDataConfig.filePath = filePath;
+            buildMappings(mockDataConfig);
+        } catch(e) {
+            successLoaded--;
+            util.warning(filePath + ' - failed: ' + e.message);
+        }
+        util.print(filePath + ' - loaded');
     });
+
+    util.print(successLoaded + " json mock data files are found and loaded successfully.");
 
     return requestMappings;
 }

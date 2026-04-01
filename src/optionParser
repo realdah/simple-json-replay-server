@@ -47,7 +47,7 @@ function parseArguments() {
                         console.log(key + " is not a valid number, use default value [" + options[key] + "]\n");
                     }
                 } else {
-                    options[key] = arg.replace(option, "");
+                    options[key] = arg.replace(optionName, "");
                 }
             }
         });
